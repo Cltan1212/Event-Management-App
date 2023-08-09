@@ -1,0 +1,17 @@
+{
+  "name": "assignment",
+  "version": "1.0.0",
+  "description": "assignment 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Uyen & Chun Ling",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://git.infotech.monash.edu/fit2095-teams-s2-23/Lab01-Team-21/assignment-1.git"
+  }
+}
