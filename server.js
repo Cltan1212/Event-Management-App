@@ -3,4 +3,8 @@ const app = express();
 const path = require("path");
 
 app.listen(8080);
-app.use('/', router);
+//app.use('/', router);
+
+app.get("/", function(req, res){
+    res.sendFile(path.join(__dirname,"views","index.html"));
+})
