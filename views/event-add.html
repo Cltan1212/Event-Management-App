@@ -1,0 +1,25 @@
+<html>
+    <body>
+        <form action = "/event-list" method = "post">
+            Name:
+            <input type = "text" name = "name" required placeholder="Enter event name"/> </br>
+            Description:
+            <input type = "text" name = "description" /> </br>
+            Image:
+            <input type = "text" name = "image" placeholder="Enter statis source path"/> </br>
+            Start Date Time:
+            <input type = "date" name = "startDateTime" required/> </br>
+            Duration In Minutes:
+            <input type = "number" name = "duration" placeholder="Event duration in Minutes"/> </br>
+            Is Active:
+            <input type = "checkbox" name = "isActive" /> </br>
+            Capacity:
+            <input type = "number" name = "capacity" placeholder="Event Capacity"/> </br>
+            Ticket Available:
+            <input type = "number" name = "ticketsAvailable" placeholder="Ticket Available (optional)"/> </br>
+            Category Id:
+            <input type = "text" name = "categoryID" required placeholder="Enter Category Id"/></br>
+            <button>Submit</button>
+        </form>
+    </body>
+</html>
