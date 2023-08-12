@@ -1,13 +1,13 @@
-//Server related variables
+// Declare
 const express = require("express");
-const app = express();
 const path = require("path");
 const morgan = require("morgan"); // middleware
 
-//Category related variables
-const Category = require("./models/event-category");
+// Creating express server
+const app = express();
 
-//Event related variables
+// Importing all the routes
+const routerCategory = require("./routers/category.js");
 const eventRoute = require('./routers/event'); // import event's router
 
 app.listen(8080);
@@ -17,10 +17,10 @@ app.get('/', function(req, res){
     res.sendFile(path.join(__dirname,"views","index.html"));
 })
 
-//endpoints for category (Part I)
+// Handling routes request (Group 1)
+app.use('/29678854', routerCategory);
 
-
-// endpoints for events (Part II)
+// Handling routes request (Group 2)
 app.use('/events', eventRoute)
 app.use('/sold-out-events', eventRoute);
 app.use('/categoty/:categoryid', eventRoute);
