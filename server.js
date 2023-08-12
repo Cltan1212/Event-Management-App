@@ -13,6 +13,7 @@ const eventRoute = require('./routers/event'); // import event's router
 // Config
 app.listen(8080);
 app.use(morgan('tiny'));
+app.use(express.static("node_modules/bootstrap/dist/css"));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.set("views", path.join(__dirname, "views")); // Set the views directory
