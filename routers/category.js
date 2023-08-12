@@ -14,11 +14,12 @@ router.get("/", function(req, res) { // WIP maybe return to all categories
 // Handle GET request to show the "Add Category" form
 router.get("/add-category", function(req, res) {
     res.sendFile(path.join(__dirname, "../views", "category-add.html"));
+    res.render('category-add.html', {})
 });
 
 // Handle POST request when the form is submitted
 router.post("/add-category", function(req, res) {
-    console.log (req.body.name);
+    let name = req.body.name;
     let description = req.body.description;
     let image = req.body.image;
 

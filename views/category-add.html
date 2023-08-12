@@ -1,20 +1,28 @@
 <html>
 <head>
     <title>Add Category</title>
+    
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
 </head>
 <body>
-    <h2>Add Category</h2>
-    <form action="/add-category" method="post">
-        <label for="name">Category Name:</label>
-        <input type="text" id="name" name="name" required>
+    <h1>Add Category</h1>
+    <h2>Fill in category details & click submit</h2>
+        <div class="container">
+            <form action="/add-category" method="post">
+          
+              <label for="name"> Name</label>
+              <input type="text" name="name" placeholder="Enter category name">
+          
+              <label for="description">Description</label>
+              <textarea type="text" name="description" placeholder="Write something.." style="height:200px"></textarea>
 
-        <label for="description">Description:</label>
-        <textarea id="description" name="description" rows="4" required></textarea>
-
-        <label for="image">Image URL:</label>
-        <input type="text" id="image" name="image" required>
-
-        <button type="submit">Add Category</button>
+              <label for="image"> Name</label>
+              <input type="text" name="image" placeholder="Enter statis source path">
+          
+              <input type="submit" value="Submit">
+          
+            </form>
+          </div>
     </form>
 </body>
 </html>

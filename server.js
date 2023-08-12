@@ -15,6 +15,8 @@ app.listen(8080);
 app.use(morgan('tiny'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
+app.set("views", path.join(__dirname, "views")); // Set the views directory
+
 // parse application/x-www-form-urlencoded
 app.use(express.urlencoded({extended: true}));
 // parse application/json
