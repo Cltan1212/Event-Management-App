@@ -36,7 +36,10 @@ app.get('/', function(req, res){
 app.use('/29678854', routeCategory);
 
 // Handling routes request (Group 2)
-app.use('/ChunLing', eventRoute)
+app.use('/events', eventRoute)
+app.use('/sold-out-events', eventRoute);
+app.use('/categoty/:categoryid', eventRoute);
+app.use('/delete-event', eventRoute);
 
 /** URL Parameters
  * http://localhost:8080/add/BMW/X7/2023
