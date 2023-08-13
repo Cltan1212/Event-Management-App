@@ -24,10 +24,10 @@ router.post("/add-category", function(req, res) {
 
     let newCategory = new Category(name);
     if (description != null){
-        newCategory.description == description;
+        newCategory.description = description;
     }
     if(image != null){
-        newCategory.image == image
+        newCategory.image = image
     }
 
     categoryDB.push(newCategory);
@@ -37,7 +37,7 @@ router.post("/add-category", function(req, res) {
 
 // ---------------------------------List all categories in tabular format---------------------------------
 router.get("/event-categories", function(req, res) { // WIP
-    res.send(categoryDB);
+    res.render('category-list',{ records: categoryDB});
 });
 
 router.get("/search-category", function(req, res) { // WIP

@@ -1,6 +1,7 @@
 class Category{
     constructor (name){
         this.id = `C${this.randomChar()}${this.randomChar()}-${this.randomId()}`;
+        this.name = name;
         this.description = "";
         this.image = "";
         this.createdAt = new Date();  //Set datetime to the current timestamp upon created a category
