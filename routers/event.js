@@ -44,4 +44,3 @@ eventRoute.get('/delete-event', function(req, res) {
 });
 
 module.exports = eventRoute;
-

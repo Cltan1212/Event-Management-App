@@ -8,6 +8,7 @@
     <table border="1">
         <thead>
             <tr>
+                <th>Id</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Start Date Time</th>
@@ -21,10 +22,11 @@
             <!-- Loop through events to create rows in the table -->
             <% events.forEach(function(event) { %>
                 <tr>
+                    <td><%= event.id %></td>
                     <td><%= event.name %></td>
                     <td><%= event.description %></td>
-                    <td><%= event.startDateTime %></td>
                     <td><%= event.duration %></td>
+                    <td><%= event.startDateTime %></td>
                     <td><%= event.capacity %></td>
                     <td><%= event.ticketsAvailable %></td>
                     <td><%= event.categoryID %></td>
