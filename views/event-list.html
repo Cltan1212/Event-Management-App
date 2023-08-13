@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event List</title>
+</head>
+<body>
+    <h1>Event List</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Start Date Time</th>
+                <th>Duration</th>
+                <th>Capacity</th>
+                <th>Tickets Available</th>
+                <th>Category ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through events to create rows in the table -->
+            <% events.forEach(function(event) { %>
+                <tr>
+                    <td><%= event.name %></td>
+                    <td><%= event.description %></td>
+                    <td><%= event.startDateTime %></td>
+                    <td><%= event.duration %></td>
+                    <td><%= event.capacity %></td>
+                    <td><%= event.ticketsAvailable %></td>
+                    <td><%= event.categoryID %></td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>

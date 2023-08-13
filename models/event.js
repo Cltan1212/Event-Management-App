@@ -1,14 +1,23 @@
 class Event {
-    constructor(name, startDateTime, duration, categoryID) {  // how default work??
-        this.id = `E${this.randomChar}${this.randomChar}-${this.randomId}`;
+    constructor(
+        name,
+        description = "", 
+        startDateTime, 
+        duration, 
+        isActive = true,
+        image = "",
+        capacity = 1000,
+        ticketsAvailable = capacity,
+        categoryID) {  
+        this.id = `E${this.randomChar()}${this.randomChar()}-${this.randomId()}`;
         this.name = name;
-        this.description = "";
+        this.description = description;
         this.startDateTime = startDateTime;
         this.duration = duration;
-        this.isActive = true;
-        this.image = ""; // later put default pic here
-        this.capacity = 1000;
-        this.ticketsAvailable = this.capacity;
+        this.isActive = isActive;
+        this.image = image; // later put default pic here
+        this.capacity = capacity;
+        this.ticketsAvailable = ticketsAvailable;
         this.categoryID = categoryID;
     }
 
