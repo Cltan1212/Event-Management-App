@@ -5,16 +5,15 @@ const Category = require("../models/event-category.js");
 
 let categoryDB = [];
 
-router.get("/", function(req, res) { // WIP maybe return to all categories
-    res.sendFile(path.join(__dirname, "../views",'index.html'));
+router.get("/", function(req, res) { //WIP maybe display all the options
+    res.redirect('/event-categories')
 });
 
 //---------------------------------Add Category feature---------------------------------
 
 // Handle GET request to show the "Add Category" form
 router.get("/add-category", function(req, res) {
-    res.sendFile(path.join(__dirname, "../views", "category-add.html"));
-    res.render('category-add.html', {})
+    res.render('category-add');
 });
 
 // Handle POST request when the form is submitted
@@ -23,9 +22,15 @@ router.post("/add-category", function(req, res) {
     let description = req.body.description;
     let image = req.body.image;
 
-    let category1 = new Category(name);
+    let newCategory = new Category(name);
+    if (description != null){
+        newCategory.description == description;
+    }
+    if(image != null){
+        newCategory.image == image
+    }
 
-    categoryDB.push(category1);
+    categoryDB.push(newCategory);
 
     res.redirect('/event-categories')
 });
