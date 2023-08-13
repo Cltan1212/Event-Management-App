@@ -1,46 +1,58 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="auto">
-	<head>
-		<title>Add Category Page</title>
-		<link href="/bootstrap.min.css" rel="stylesheet" />
-	</head>
 
-	<body>
-		<main>
-			<div class="album py-5">
-				<div class="container">
-					<a type="button" class="btn btn-primary" href="/">Home</a>
-					<a type="button" class="btn btn-primary" href="/event-categories">View All Categories</a>
+<head>
+	<title>Add Category Page</title>
+	<link href="/bootstrap.min.css" rel="stylesheet" />
+</head>
 
-					<h3 class="my-2">Add Category Form</h3>
+<body style="background-image: url('/category.jpg')">
+	<header style="margin-top: 50px;">
+		<div class="container" style="display: flex; flex-direction: column; align-items: center;">
+			<h1 class="my-1">Event Mangement App</h1>
 
-					<div class="row row-cols-1 row-cols-sm-2 g-3">
-						<div class="col" >
-							<div class="card shadow-sm">
-								<div class="card-body">
-									<form action="/add-category" method="POST">
-										<div class="mb-3">
-											<label for="name" class="form-label">Category Name</label>
-											<input type="text" name="name" class="form-control" id="name" placeholder="Enter category name" />
-										</div>
-
-										<div class="mb-3">
-											<label for="description" class="form-label">Description</label>
-											<textarea type="text"  name="description" class="form-control" placeholder="Enter description" style="height:100px"></textarea>
-										</div>
-
-										<div class="mb-3">
-											<label for="image" class="form-label">Image</label>
-											<input type="text" name="image" class="form-control" id="image" placeholder="Enter static resource path" />
-										</div>
-										<button class="btn btn-primary">Submit</button>
-									</form>
-								</div>
+		</div>
+		<div style="display: flex; flex-direction: column; align-items: center;">
+			<h2 class="my-2">Admin Panel</h2>
+		</div>
+	</header>
+	<main>
+		<div>
+			<div style="margin-top: 20px; display: flex; flex-direction: column; align-items: center;">
+				<h4>Add Category Form</h4>
+				<h6> Fill in category & click submit</h6>
+			</div>
+		</div>
+		<div class="row row-cols-1 row-cols-sm-2 g-3" class="container"
+			style="display: flex; flex-direction: column; align-items: center;">
+			<div class="col">
+				<div class="card shadow-sm">
+					<div class="card-body">
+						<form action="/add-category" method="POST">
+							<div class="mb-3">
+								<label for="name" class="form-label">Category Name</label>
+								<input type="text" name="name" class="form-control" id="name"
+									placeholder="Enter category name" />
 							</div>
-						</div>
+
+							<div class="mb-3">
+								<label for="description" class="form-label">Description</label>
+								<textarea type="text" name="description" class="form-control"
+									placeholder="Enter description" style="height:100px"></textarea>
+							</div>
+
+							<div class="mb-3">
+								<label for="image" class="form-label">Image</label>
+								<input type="text" name="image" class="form-control" id="image"
+									placeholder="Enter static resource path" />
+							</div>
+							<button class="btn btn-primary">Submit</button>
+						</form>
 					</div>
 				</div>
 			</div>
-		</main>
-	</body>
+		</div>
+	</main>
+</body>
+
 </html>
