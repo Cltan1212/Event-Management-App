@@ -16,9 +16,7 @@ app.listen(8080, function () {
 });
 app.use(morgan('tiny'));
 
-app.use(express.static("node_modules/bootstrap/dist/css"));
-app.use(express.static("images"));
-
+//Setup the view Engine
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
@@ -28,8 +26,14 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.json())
 
 
+//Setup the static assets directories
+app.use(express.static("node_modules/bootstrap/dist/css"));
+app.use(express.static("images"));
+app.use(express.static('css'));
+
 app.get('/', function(req, res){
-    res.sendFile(path.join(__dirname,"views","index.html"));
+    // res.sendFile(path.join(__dirname,"views","index.html"));
+    res.render('index.html');
 })
 
 // Handling routes request (Group 1)
