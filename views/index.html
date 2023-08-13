@@ -1,31 +1,63 @@
-// How to center this page, and fix the 
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Event Management App</title>
-		<link href="bootstrap.min.css" rel="stylesheet" />
-	</head>
 
-	<body style="background-image: url('event-management.jpg')">
-		<div class="album py-5">
-			<div class="container">
-				<h1 class="my-2">Event Mangement App</h1>
+<head>
+    <title>Event Management App</title>
+    <link href="bootstrap.min.css" rel="stylesheet" />
+</head>
+<style>
+    main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 45vh;
+        margin: 0;
+    }
+
+    .content {
+        text-align: center;
+    }
+</style>
+
+<body style="background-image: url('event-management.jpg')">
+    <div class="album py-5">
+        <header>
+            <div class="container" style="display: flex; flex-direction: column; align-items: center;">
+                <h1 class="my-1">Event Mangement App</h1>
+
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center;">
                 <h3 class="my-2">Admin Panel</h3>
+            </div>
+        </header>
+        <main>
+            <div>
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <h6> Tasks Group 1 (Uyen Vu 29678854)</h6>
+                    <div>
+                        <a class="btn btn-success" href="/add-category">Add Category</a>
+                        <a class="btn btn-success" href="/view-books">List all Categories</a>
+                        <a class="btn btn-success" href="/view-books">List categories by keyword</a>
+                        <a class="btn btn-success" href="/view-books">Show Event details</a>
+                        <a class="btn btn-success" href="/view-books">Delete Category by ID</a>
+                    </div>
 
-                <h6> Tasks Group 1 (Uyen Vu 29678854)</h6>
-				<a class="btn btn-success" href="/add-category">Add Category</a>
-				<a class="btn btn-success" href="/view-books">List all Categories</a>
-				<a class="btn btn-success" href="/view-books">List categories by keyword</a>
-				<a class="btn btn-success" href="/view-books">Show Event details</a>
-				<a class="btn btn-success" href="/view-books">Delete Category by ID</a>
 
-                <h6> Tasks Group 2 (Chun Ling 33402973)</h6>
-				<a class="btn btn-success" href="/add-book">Add Event</a>
-				<a class="btn btn-success" href="/view-books">List all Events</a>
-				<a class="btn btn-success" href="/view-books">List sold out Events</a>
-				<a class="btn btn-success" href="/view-books">Category detail page</a>
-				<a class="btn btn-success" href="/view-books">Delete Event by ID</a>
-			</div>
-		</div>
-	</body>
+                </div>
+                <div style="margin-top: 50px; display: flex; flex-direction: column; align-items: center;">
+                    <h6> Tasks Group 2 (Chun Ling 33402973)</h6>
+                    <div>
+                        <a class="btn btn-success" href="/add-book">Add Event</a>
+                        <a class="btn btn-success" href="/view-books">List all Events</a>
+                        <a class="btn btn-success" href="/view-books">List sold out Events</a>
+                        <a class="btn btn-success" href="/view-books">Category detail page</a>
+                        <a class="btn btn-success" href="/view-books">Delete Event by ID</a>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
 </html>
