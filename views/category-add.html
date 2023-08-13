@@ -1,35 +1,47 @@
-<html>
-<head>
-    <title>Add Category</title>
-    <link href="bootstrap.min.css" rel="stylesheet" />
-</head>
-<body>
-    <div class="container m-3">
-        <div class="mt-4 p-5 bg-primary text-white rounded">
-            <h1>Add Category</h1>
-            <h2>Fill in category details & click submit</h2>
-        </div>
-    </div>
-        <div class="container m-3">
-            <form action="/add-category" method="post">
-          
-              <label for="name"> Name</label>
-              <input type="text" name="name" placeholder="Enter category name">
-          
-              <label for="description">Description</label>
-              <textarea type="text" name="description" placeholder="Write something.." style="height:200px"></textarea>
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+	<head>
+		<title>Add Book Page</title>
+		<link href="/bootstrap.min.css" rel="stylesheet" />
+	</head>
 
-              <label for="image"> Name</label>
-              <input type="text" name="image" placeholder="Enter statis source path">
-          
-              <input type="submit" class="btn btn-primary" value="Submit">
-          
-            </form>
-          </div>
-    </form>
-</body>
+	<body>
+		<main>
+			<div class="album py-5">
+				<div class="container">
+					<a type="button" class="btn btn-primary" href="/">Home</a>
+					<a type="button" class="btn btn-primary" href="/event-categories">View All Categories</a>
+
+					<h3 class="my-2">Add Category Form</h3>
+
+					<div class="row row-cols-1 row-cols-sm-2 g-3">
+						<div class="col">
+							<div class="card shadow-sm">
+								<div class="card-body">
+									<form action="/add-category" method="POST">
+										<div class="mb-3">
+											<label for="name" class="form-label">Category Name</label>
+											<input type="text" name="name" class="form-control" id="name" placeholder="Enter category name" />
+										</div>
+
+										<div class="mb-3">
+											<label for="description" class="form-label">Description</label>
+											<textarea type="text"  name="description" class="form-control" placeholder="Enter description" style="height:100px"></textarea>
+										</div>
+
+										<div class="mb-3">
+											<label for="image" class="form-label">Image</label>
+											<input type="text" name="image" class="form-control" id="image" placeholder="Enter static resource path" />
+										</div>
+
+										<button class="btn btn-primary">Submit</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+	</body>
 </html>
-
-
-
-

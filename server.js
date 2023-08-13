@@ -7,16 +7,20 @@ const morgan = require("morgan"); // middleware
 const app = express();
 
 // Importing all the routes
-const routerCategory = require("./routers/category.js"); // import the category router
+const routeCategory = require("./routers/category.js"); // import the category router
 const eventRoute = require('./routers/event'); // import event's router
 
 // Config
-app.listen(8080);
+app.listen(8080, function () {
+	console.log(`listening on port ${8080}`);
+});
 app.use(morgan('tiny'));
+
 app.use(express.static("node_modules/bootstrap/dist/css"));
+app.use(express.static("images"));
+
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
-app.set("views", path.join(__dirname, "views")); // Set the views directory
 
 // parse application/x-www-form-urlencoded
 app.use(express.urlencoded({extended: true}));
@@ -29,7 +33,7 @@ app.get('/', function(req, res){
 })
 
 // Handling routes request (Group 1)
-app.use('/29678854', routerCategory);
+app.use('/29678854', routeCategory);
 
 // Handling routes request (Group 2)
 app.use('/events', eventRoute)
