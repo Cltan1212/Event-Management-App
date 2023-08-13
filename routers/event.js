@@ -23,13 +23,12 @@ eventRoute.post('/add-event', function(req, res) {
         eventData.categoryID
     )
     events.push(newEvent);
-    // res.send("Thank You")
-    res.redirect('../ChunLing/events')
+    res.redirect(path.join(req.baseUrl, '/events'));
 })
 
 eventRoute.get('/events', function(req, res) {
-    res.send(events)
-    // res.sendFile(path.join(__dirname, "../views", "event-list.html"));
+    res.render('event-list', { events: events });
+    res.sendFile(path.join(__dirname, "../views", "event-list.html"));
 })
 
 eventRoute.get('/sold-out-events', function(req, res) {
