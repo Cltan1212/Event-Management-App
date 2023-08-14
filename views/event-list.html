@@ -1,38 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Event List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Event List</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Start Date Time</th>
-                <th>Duration</th>
-                <th>Capacity</th>
-                <th>Tickets Available</th>
-                <th>Category ID</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Loop through events to create rows in the table -->
-            <% events.forEach(function(event) { %>
+    <div class="container mt-5">
+        <h1 class="mb-4">Event List</h1>
+        <!-- Bootstrap table with hover effect -->
+        <table class="table table-hover">
+            <thead>
                 <tr>
-                    <td><%= event.id %></td>
-                    <td><%= event.name %></td>
-                    <td><%= event.description %></td>
-                    <td><%= event.duration %></td>
-                    <td><%= event.startDateTime %></td>
-                    <td><%= event.capacity %></td>
-                    <td><%= event.ticketsAvailable %></td>
-                    <td><%= event.categoryID %></td>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Start Date Time</th>
+                    <th>Duration</th>
+                    <th>Capacity</th>
+                    <th>Tickets Available</th>
+                    <th>Category ID</th>
                 </tr>
-            <% }); %>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <!-- Loop through events to create rows in the table -->
+                <!-- Assume events is a JavaScript array of event objects -->
+                <% events.forEach(function(event) { %>
+                    <tr>
+                        <td><%= event.id %></td>
+                        <td><%= event.name %></td>
+                        <td><%= event.description %></td>
+                        <td><%= event.duration %></td>
+                        <td><%= event.startDateTime %></td>
+                        <td><%= event.capacity %></td>
+                        <td><%= event.ticketsAvailable %></td>
+                        <td><%= event.categoryID %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
