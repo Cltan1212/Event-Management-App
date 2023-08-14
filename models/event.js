@@ -1,3 +1,5 @@
+const randString = require("randomstring");
+
 class Event {
     constructor(
         name,
@@ -9,7 +11,8 @@ class Event {
         capacity = 1000,
         ticketsAvailable = capacity,
         categoryID) {  
-        this.id = `E${this.randomChar()}${this.randomChar()}-${this.randomId()}`;
+        
+        this.id = `E${randString.generate({length: 2,charset: "ABCDEF",})}-${Math.round(Math.random()*1000)}`;
         this.name = name;
         this.description = description;
         this.startDateTime = startDateTime;
@@ -19,16 +22,6 @@ class Event {
         this.capacity = capacity;
         this.ticketsAvailable = ticketsAvailable;
         this.categoryID = categoryID;
-    }
-
-    randomChar(){
-        const randomCharCode = Math.floor(Math.random() * 26) + 97; // generate between 0 - 25 (26 alphabet)
-        const randomChar = String.fromCharCode(randomCharCode); // convert to a character
-        return randomChar;
-    }
-
-    randomId(){
-        return Math.round(Math.random()*1000);
     }
 }
 

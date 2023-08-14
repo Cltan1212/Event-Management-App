@@ -39,8 +39,40 @@ eventRoute.get('/categoty/:categoryid', function(req, res) {
     res.sendFile(path.join(__dirname, "../views", "category.html"))
 });
 
+
+/**
+ * User could delete event by using query string
+ * For example:
+ * http://localhost:8080/ChunLing/delete-event?eventId=EXX-XXX
+ */
 eventRoute.get('/delete-event', function(req, res) {
-    res.redirect('/events');
+    let eventId = req.query.eventId
+    for (let i = 0;i < events.length; i++) {
+        if (events[i].id == eventId) {
+            events.splice(i,1);
+            break;
+        }
+    }
+    res.redirect("/ChunLing/events");
 });
+
+/**
+ * User choose to delete from the main page
+ */
+eventRoute.get('/delete', function(req, res) {
+    res.render('event-delete', { events: events });
+    res.sendFile(path.join(__dirname, "../views", "event-delete.html"))
+})
+
+eventRoute.post('/delete-event', function(req, res) {
+    let eventId = req.body.eventId
+    for (let i = 0;i < events.length; i++) {
+        if (events[i].id == eventId) {
+            events.splice(i,1);
+            break;
+        }
+    }
+    res.redirect("/ChunLing/events");
+})
 
 module.exports = eventRoute;
