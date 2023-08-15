@@ -4,7 +4,7 @@ class Category{
         this.name = name;
         this.description = "";
         this.image = "";
-        this.createdAt = new Date();  //Set datetime to the current timestamp upon created a category
+        this.createdAt = Date.now();  //Set datetime to the current timestamp upon created a category
     }
 
     
@@ -15,7 +15,7 @@ class Category{
     }
 
     randomId(){
-        return Math.round(Math.random()*1000);
+        return Math.round(Math.random()*10000);
     }
 }
 

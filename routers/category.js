@@ -1,9 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const path = require("path");
-const Category = require("../models/event-category.js");
+const Category = require("../models/event-category");
 
-let categoryDB = [];
+let categoryDb = [];
+
+let category1 = new Category("Xmas-Pool","Christmas pool party at St.Kilda");
+categoryDb.push(category1);
 
 router.get("/", function(req, res) { //WIP maybe display all the options
     res.redirect('/event-categories')
@@ -18,26 +21,19 @@ router.get("/add-category", function(req, res) {
 
 // Handle POST request when the form is submitted
 router.post("/add-category", function(req, res) {
-    let name = req.body.name;
-    let description = req.body.description;
-    let image = req.body.image;
-
-    let newCategory = new Category(name);
-    if (description != null){
-        newCategory.description = description;
-    }
-    if(image != null){
-        newCategory.image = image
-    }
-
-    categoryDB.push(newCategory);
-
-    res.redirect('/event-categories')
+    let reqBody = req.body;
+    let newCategory = new Category(
+        reqBody.categoryName,
+        reqBody.categoryDescription,
+        reqBody.categoryImage
+        );
+    categoryDb.push(newCategory);
+    res.redirect("/add-category"); 
 });
 
 // ---------------------------------List all categories in tabular format---------------------------------
 router.get("/event-categories", function(req, res) { // WIP
-    res.render('category-list',{ records: categoryDB});
+    res.render('category-list',{categoryDb});
 });
 
 router.get("/search-category", function(req, res) { // WIP

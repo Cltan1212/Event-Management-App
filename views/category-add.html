@@ -10,7 +10,6 @@
 	<header style="margin-top: 50px;">
 		<div class="container" style="display: flex; flex-direction: column; align-items: center;">
 			<h1 class="my-1">Event Mangement App</h1>
-
 		</div>
 		<div style="display: flex; flex-direction: column; align-items: center;">
 			<h2 class="my-2">Admin Panel</h2>
@@ -31,19 +30,19 @@
 						<form action="/add-category" method="POST">
 							<div class="mb-3">
 								<label for="name" class="form-label">Category Name</label>
-								<input type="text" name="name" class="form-control" id="name"
+								<input type="text" name="categoryName" class="form-control" id="name"
 									placeholder="Enter category name" />
 							</div>
 
 							<div class="mb-3">
 								<label for="description" class="form-label">Description</label>
-								<textarea type="text" name="description" class="form-control"
+								<textarea type="text" name="categoryDescription" class="form-control" id="description"
 									placeholder="Enter description" style="height:100px"></textarea>
 							</div>
 
 							<div class="mb-3">
 								<label for="image" class="form-label">Image</label>
-								<input type="text" name="image" class="form-control" id="image"
+								<input type="text" name="categoryImage" class="form-control" id="image"
 									placeholder="Enter static resource path" />
 							</div>
 							<button class="btn btn-primary">Submit</button>

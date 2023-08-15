@@ -2,17 +2,12 @@
 <html lang="en" data-bs-theme="auto">
 
 <head>
-    <title>Add Book Page</title>
     <link href="/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
         <div class="album py-5">
             <div class="container">
-
-                <a type="button" class="btn btn-primary" href="/">Home</a>
-                <a type="button" class="btn btn-primary" href="/add-category">Add New Category</a>
-                
                 <h3 class="my-2">List of Categories</h3>
 
                 <div class="row row-cols-1 g-3">
@@ -21,27 +16,31 @@
                             <thead>
                               <tr>
                                 <th scope="col">Id</th>
-                                <th scope="col">Book Name</th>
-                                <th scope="col">Author</th>
-                                <th scope="col">Published Year</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Created Date</th>
                               </tr>
                             </thead>
                             
                             <tbody>
-                                <% for (let i=0; i <categoryDB.length; i++){ %>
+                                <% for (let i=0; i <categoryDb.length; i++){ %>
                                 <tr>
-                                <th scope="row"><%= records[i].id %></th>
-                                <td><%= category[i].id %></td>
-                                <td><%= category[i].name %></td>
-                                <td><%= category[i].description %></td>
-                                <td><%= category[i].image %></td>
-                                <td><%= category[i].createdAt %></td>                       
+                                <th scope="row"><%= categoryDb[i].id %></th>
+                                <td><%= categoryDb[i].id %></td>
+                                <td><%= categoryDb[i].name %></td>
+                                <td><%= categoryDb[i].description %></td>
+                                <td><%= categoryDb[i].image %></td>
+                                <td><%= categoryDb[i].createdAt %></td>                       
                               </tr>
                               <% } %>
                             </tbody>
                           </table>
+
                     </div>
                 </div>
+                <a type="button" class="btn btn-primary" href="/">Home</a>
+                <a type="button" class="btn btn-primary" href="/29678854/add-category">Add New Category</a>
             </div>
         </div>
 
