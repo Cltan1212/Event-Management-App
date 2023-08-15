@@ -7,7 +7,7 @@ const morgan = require("morgan"); // middleware
 const app = express();
 
 // Importing all the routes
-const routeCategory = require("./routers/category.js"); // import the category router
+const routeCategory = require("./routers/category"); // import the category router
 const eventRoute = require('./routers/event'); // import event's router
 
 // Config

@@ -27,12 +27,12 @@ router.get("/add-category", function(req, res) {
 router.post("/add-category", function(req, res) {
     let reqBody = req.body;
     let newCategory = new Category(
-        reqBody.categoryName,
-        reqBody.categoryDescription,
-        reqBody.categoryImage
+        reqBody.name,
+        reqBody.description,
+        reqBody.image
         );
     categoryDb.push(newCategory);
-    res.redirect("/event-categories"); 
+    res.redirect("/29678854/event-categories"); 
 });
 
 // ---------------------------------List all categories in tabular format---------------------------------
@@ -43,7 +43,7 @@ router.get("/event-categories", function(req, res) { // WIP
 // ---------------------------------List categories by keyword---------------------------------
 
 /** Query String
- * http://localhost:8080/29678854/search-category?Melbourne
+ * http://localhost:8080/29678854/search-category?description=Melbourne
  */
 
 router.get("/search-category", function(req, res) { // WIP
