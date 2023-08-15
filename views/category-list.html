@@ -20,6 +20,7 @@
                                 <th scope="col">Description</th>
                                 <th scope="col">Image</th>
                                 <th scope="col">Created Date</th>
+                                <th scope="col">Action</th>
                               </tr>
                             </thead>
                             
@@ -30,7 +31,8 @@
                                 <td><%= categoryDb[i].name %></td>
                                 <td><%= categoryDb[i].description %></td>
                                 <td><%= categoryDb[i].image %></td>
-                                <td><%= categoryDb[i].createdAt %></td>                       
+                                <td><%= categoryDb[i].createdAt.toLocaleString("en-GB")%></td>                  
+                                <td><a type="button" class="btn btn-primary" href="/">View</a></td>                  
                               </tr>
                               <% } %>
                             </tbody>
@@ -45,5 +47,4 @@
 
 
 </body>
-
 </html>
