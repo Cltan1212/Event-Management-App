@@ -1,8 +1,8 @@
 class Category{
-    constructor (name, description = "", image = " "){
+    constructor (name, description ='', image =''){
         this.name = name;
-        this.description = description + this.description; 
-        this.image = image + this.image;
+        this.description = description; 
+        this.image = image;
         this.id = `C${this.randomChar()}${this.randomChar()}-${this.randomId()}`;
         this.createdAt = new Date(); 
     }
