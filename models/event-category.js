@@ -14,8 +14,10 @@ class Category{
         return randomChar;
     }
 
-    randomId(){
-        return Math.round(Math.random()*10000);
+    randomId() {
+        const min = 1000; // Minimum value to ensure 4 digits
+        const max = 9999; // Maximum value
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 }
 
