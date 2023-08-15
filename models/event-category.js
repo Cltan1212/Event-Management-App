@@ -1,15 +1,15 @@
 class Category{
     constructor (name){
-        this.id = `C${this.randomChar()}${this.randomChar()}-${this.randomId()}`;
         this.name = name;
         this.description = "";
         this.image = "";
+        this.id = `C${this.randomChar()}${this.randomChar()}-${this.randomId()}`;
         this.createdAt = Date.now();  //Set datetime to the current timestamp upon created a category
     }
 
     
     randomChar(){
-        const randomCharCode = Math.floor(Math.random() * 26) + 97; // generate between 0 - 25 (26 alphabet)
+        const randomCharCode = Math.floor(Math.random() * 26) + 65; // generate between 0 - 25 (26 alphabet)
         const randomChar = String.fromCharCode(randomCharCode); // convert to a character
         return randomChar;
     }

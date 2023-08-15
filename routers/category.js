@@ -5,8 +5,11 @@ const Category = require("../models/event-category");
 
 let categoryDb = [];
 
-let category1 = new Category("Xmas-Pool","Christmas pool party at St.Kilda");
+let category1 = new Category("THE LUME Melbourne Presents Connection","Connection is a showcase of breathtaking stories through First Nations art and music. Featuring over 550 artworks from more than 110 visual and musical artists, ");
+let category2 = new Category("Cody Johnson","Cody Johnson will perform at Rod Laver Arena in Melbourne, Australia on 19 August 2023")
 categoryDb.push(category1);
+categoryDb.push(category2);
+
 
 router.get("/", function(req, res) { //WIP maybe display all the options
     res.redirect('/event-categories')
