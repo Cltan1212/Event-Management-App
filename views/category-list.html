@@ -33,13 +33,14 @@
                             </thead>
                             
                             <tbody>
-                                <% for (let i=0; i <categoryDb.length; i++){ %>
+                              <% const categoriesToDisplay = filteredCategories.length > 0 ? filteredCategories: allCategories; %>
+                                <% for (let i=0; i <categoriesToDisplay.length; i++){ %>
                                 <tr>
-                                <th scope="row"><%= categoryDb[i].id %></th>
-                                <td><%= categoryDb[i].name %></td>
-                                <td><%= categoryDb[i].description %></td>
-                                <td><%= categoryDb[i].image %></td>
-                                <td><%= categoryDb[i].createdAt.toLocaleString("en-GB")%></td>                  
+                                <th scope="row"><%= categoriesToDisplay[i].id %></th>
+                                <td><%= categoriesToDisplay[i].name %></td>
+                                <td><%= categoriesToDisplay[i].description %></td>
+                                <td><%= categoriesToDisplay[i].image %></td>
+                                <td><%= categoriesToDisplay[i].createdAt.toLocaleString("en-GB")%></td>                  
                                 <td><a type="button" class="btn btn-success" href="/">View</a></td>                  
                               </tr>
                               <% } %>

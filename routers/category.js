@@ -49,11 +49,12 @@ router.get("/event-categories", function(req, res) { // WIP
  */
 
 router.get("/search-category", function(req, res) { // WIP
-    let keyword = req.body.keyword;
+    let keyword = req.query.keyword;
     let filteredKeyword = categoryDb.filter(category => 
         category.description.toLowerCase().includes(keyword.toLowerCase())
     )
-    res.render("category-list", { categories: filteredKeyword });
+    res.render("category-list", { filteredCategories: filteredKeyword, allCategories: categoryDb});
+    console.log("Filtered Count:", filteredKeyword.length);
 
 });
 
