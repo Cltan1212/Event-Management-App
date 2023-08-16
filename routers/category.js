@@ -53,7 +53,7 @@ router.get("/search-category", function(req, res) { // WIP
     let filteredKeyword = categoryDb.filter(category => 
         category.description.toLowerCase().includes(keyword.toLowerCase())
     )
-    res.render("category-list", { filteredCategories: filteredKeyword, allCategories: categoryDb});
+    res.render("category-list (filter)", { filteredCategories: filteredKeyword, allCategories: categoryDb});
     console.log("Filtered Count:", filteredKeyword.length);
 
 });
