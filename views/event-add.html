@@ -9,19 +9,37 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body style="background-color: #25292e;">
-    <div class="container mt-5">
-        <div class="row align-items-center mb-4">
-            <div class="col-md-8">
-                <div class="d-flex justify-content-center align-items-center">
-                    <h1 style="color: white;">Add Event</h1>
-                </div>
-                <div class="text-center">
-                    <p style="color: white;">Fill in event details &amp; click submit</p>
+    <nav id="mainNav" class="navbar navbar-expand-lg fixed-top navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="../" style="font-weight: bold; color: white;">Cosmos Team</a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+            <div id="navbarResponsive" class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../" style="color: white;">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../ChunLing/delete" style="color: white;">Delete Event</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../ChunLing/events" style="color: white;">Event List</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../ChunLing/sold-out-events" style="color: white;">Sold Out Event</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <header class="masthead" style="position: relative; background-image: url('/event.jpeg'); background-size: cover; background-position: center; height: 100vh; display: flex; justify-content: center; align-items: center;">
+        <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-lg-8 mx-auto position-relative text-center">
+                    <div class="site-heading">
+                        <h1 style="color: white; font-weight: bold; font-size: 3rem;">Add Event</h1>
+                        <span class="subheading" style="color: white;">Fill in event details &amp; click submit</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
+    </header>
+    
     <!-- Centered form container with custom background color -->
     <div class="container mt-5">
         <div class="row justify-content-center">
@@ -41,13 +59,18 @@
                             <input type="text" class="form-control" id="image" name="image" placeholder="Enter static source path">
                         </div>
                         <div class="mb-3">
-                            <label for="startDateTime" class="form-label">Start Date Time:</label>
-                            <input type="date" class="form-control" id="startDateTime" name="startDateTime" required>
+                            <label for="startDateTime" class="form-label">Start Date and Time:</label>
+                            <input type="datetime-local" class="form-control" id="startDateTime" name="startDateTime" required>
                         </div>
                         <div class="mb-3">
                             <label for="duration" class="form-label">Duration In Minutes:</label>
                             <input type="number" class="form-control" id="duration" name="duration" required placeholder="Event duration in Minutes">
                         </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">End Date and Time:</label>
+                            <input type="text" class="form-control" id="endDateTime" name="endDateTime" disabled>
+                        </div>            
                         <div class="mb-3">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="isActive" name="isActive">
@@ -72,5 +95,57 @@
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="mt-5 text-center" style="color: #e0dfdf;">
+        <p>See more <a href="../cosmos" style="color: white; text-decoration: underline;">@cosmos team</a></p>
+    </footer>    
+
+    <script>
+        // Get the navigation bar element
+        const navBar = document.getElementById('mainNav');
+
+        // Add an event listener for the scroll event
+        window.addEventListener('scroll', () => {
+            // Check the scroll position
+            if (window.scrollY > 50) {
+                // Change the background color when scrolling down
+                navBar.style.backgroundColor = '#343a40'; // Change to your desired color
+            } else {
+                // Change back to the original color when at the top
+                navBar.style.backgroundColor = 'transparent'; // Change to your original color
+            }
+        });
+
+    // Get the start date-time input element
+    const startDateTimeInput = document.getElementById('startDateTime');
+
+    // Get the duration input element
+    const durationInput = document.getElementById('duration');
+
+    // Get the end date-time input element
+    const endDateTimeInput = document.getElementById('endDateTime');
+
+    // Add an event listener to the start date-time input
+    startDateTimeInput.addEventListener('input', calculateEndTime);
+
+    // Add an event listener to the duration input
+    durationInput.addEventListener('input', calculateEndTime);
+
+    // Function to calculate and set the end date-time
+    function calculateEndTime() {
+        const startDateTimeValue = new Date(startDateTimeInput.value);
+        const durationValue = parseInt(durationInput.value);
+
+        if (!isNaN(startDateTimeValue) && !isNaN(durationValue)) {
+            const endTime = new Date(startDateTimeValue.getTime() + (durationValue * 60000)); // Convert duration to milliseconds
+            const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: true };
+            const endTimeString = endTime.toLocaleString('en-US', options);
+            endDateTimeInput.value = endTimeString;
+        } else {
+            endDateTimeInput.value = '';
+        }
+    }
+    </script>
 </body>
 </html>
