@@ -42,9 +42,9 @@ app.use('/29678854', routeCategory);
 // Handling routes request (Group 2)
 app.use('/ChunLing', eventRoute)
 
-app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname,"views","404.html"));
-})
+app.get("*", function (request, response) {
+	response.render("404");
+});
 
 /** URL Parameters
  * http://localhost:8080/add/BMW/X7/2023
