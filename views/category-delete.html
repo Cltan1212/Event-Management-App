@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+	<title>Add Category Page</title>
+	<link href="/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body style="background-image: url('/category.jpg')">
+	<header style="margin-top: 50px;">
+		<div class="container" style="display: flex; flex-direction: column; align-items: center;">
+			<h1 class="my-1">Event Mangement App</h1>
+		</div>
+		<div style="display: flex; flex-direction: column; align-items: center;">
+			<h2 class="my-2">Admin Panel</h2>
+		</div>
+	</header>
+	<main>
+		<div>
+			<div style="margin-top: 20px; display: flex; flex-direction: column; align-items: center;">
+				<h4>Delete Category</h4>
+				<h6> Provide category ID & click Delete</h6>
+			</div>
+		</div>
+		<div class="row row-cols-1 row-cols-sm-2 g-3" class="container"
+			style="display: flex; flex-direction: column; align-items: center;">
+			<div class="col">
+				<div class="card shadow-sm">
+					<div class="card-body">
+						<form action="/29678854/add-category" method="POST">
+							<div class="mb-3">
+								<label for="name" class="form-label">Category ID</label>
+								<input type="text" name="id" class="form-control" id="id"
+									placeholder="Enter category ID" required/>
+							</div>
+							<button class="btn btn-primary">Delete</button>
+						</form>
+					</div>
+				</div>
+			</div>
+            <a type="button" class="btn btn-primary" href="/">Home</a>
+		</div>
+	</main>
+</body>
+
+</html>

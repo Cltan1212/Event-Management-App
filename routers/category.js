@@ -43,13 +43,13 @@ router.get("/event-categories", function(req, res) { // WIP
 // ---------------------------------List categories by keyword---------------------------------
 
 /** Query String
- * http://localhost:8080/29678854/search-category?description=Melbourne
+ * http://localhost:8080/29678854/search-category?keyword=Melbourne
  */
 
 router.get("/search-category", function(req, res) { // WIP
-    let categoryKeyword = req.body.categoryKeyword;
+    let keyword = req.body.keyword;
     let filteredKeyword = categoryDb.filter(category => 
-        category.description.toLowerCase().includes(categoryKeyword.toLowerCase())
+        category.description.toLowerCase().includes(keyword.toLowerCase())
     )
     res.render("category-list", { categories: filteredKeyword });
 
@@ -62,7 +62,20 @@ router.get("/event", function(req, res) { // WIP
 
 // ---------------------------------Delete a category by ID---------------------------------
 router.get("/delete-category", function(req, res) { // WIP
-    res.sendFile(path.join(__dirname, "../views",'index.html'));
+    res.render('category-delete');
+});
+
+router.post("/delete-category", function(req, res) { // WIP
+	let id = req.body.id;
+    console.log(id)
+	for (let i = 0; i < categoryDb.length; i++) {
+		if (categoryDb[i].id === id) {
+			categoryDb.splice(i, 1);
+            console.log(categoryDb)
+			break;
+		}
+	}
+	res.redirect("/29678854/event-categories"); 
 });
 
 
