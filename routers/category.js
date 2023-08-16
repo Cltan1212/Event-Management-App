@@ -12,6 +12,8 @@ categoryDb.push(category2);
 console.log(categoryDb)
 
 
+let fixedViewsPath = path.join(__dirname, "../views")
+
 router.get("/", function(req, res) {
     res.render('index.html')
 });
@@ -20,7 +22,7 @@ router.get("/", function(req, res) {
 
 // Handle GET request to show the "Add Category" form
 router.get("/add-category", function(req, res) {
-    res.render('category-add');
+    res.sendFile(path.join(fixedViewsPath, "category-add.html"))
 });
 
 // Handle POST request when the form is submitted
@@ -57,17 +59,16 @@ router.get("/search-category", function(req, res) { // WIP
 
 // ---------------------------------Show events details---------------------------------
 router.get("/event", function(req, res) { // WIP
-    res.sendFile(path.join(__dirname, "../views",'index.html'));
+    res.sendFile(path.join(fixedViewsPath, 'index.html'));
 });
 
 // ---------------------------------Delete a category by ID---------------------------------
 router.get("/delete-category", function(req, res) { // WIP
-    res.render('category-delete');
+    res.sendFile(path.join(fixedViewsPath, "category-delete.html"))
 });
 
 router.post("/delete-category", function(req, res) { // WIP
 	let id = req.body.id;
-    console.log(id)
 	for (let i = 0; i < categoryDb.length; i++) {
 		if (categoryDb[i].id === id) {
 			categoryDb.splice(i, 1);
