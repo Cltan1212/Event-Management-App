@@ -52,7 +52,7 @@ eventRoute.get('/events', function(req, res) {
     res.sendFile(path.join(__dirname, "../views", "event-list.html"));
 })
 
-eventRoute.get('/categoty/:categoryid', function(req, res) {
+eventRoute.get('/category', function(req, res) {
     res.sendFile(path.join(__dirname, "../views", "category.html"))
 });
 
