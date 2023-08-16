@@ -6,6 +6,14 @@
 </head>
 
 <body style="background-image: url('/category.jpg')">
+  <header style="margin-top: 50px; background-color: #caedba">
+		<div class="container" style="display: flex; flex-direction: column; align-items: center;">
+			<h1 class="my-1">Event Mangement App</h1>
+		</div>
+		<div style="display: flex; flex-direction: column; align-items: center;">
+			<h2 class="my-2">Admin Panel</h2>
+		</div>
+	</header>
         <div class="album py-5">
             <div class="container">
                 <h3 class="my-2">List of Categories</h3>
@@ -32,7 +40,7 @@
                                 <td><%= categoryDb[i].description %></td>
                                 <td><%= categoryDb[i].image %></td>
                                 <td><%= categoryDb[i].createdAt.toLocaleString("en-GB")%></td>                  
-                                <td><a type="button" class="btn btn-primary" href="/">View</a></td>                  
+                                <td><a type="button" class="btn btn-success" href="/">View</a></td>                  
                               </tr>
                               <% } %>
                             </tbody>
@@ -40,9 +48,9 @@
 
                     </div>
                 </div>
-                <a type="button" class="btn btn-primary" href="/">Home</a>
-                <a type="button" class="btn btn-primary" href="/29678854/add-category">Add New Category</a>
-                <a type="button" class="btn btn-primary" href="/29678854/delete-category">Delete category</a>
+                <a type="button" class="btn btn-success" href="/">Home</a>
+                <a type="button" class="btn btn-success" href="/29678854/add-category">Add New Category</a>
+                <a type="button" class="btn btn-success" href="/29678854/delete-category">Delete category</a>
             </div>
         </div>
 
