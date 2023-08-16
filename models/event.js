@@ -8,10 +8,10 @@ class Event {
         startDateTime, 
         duration, 
         endDateTime,
-        isActive = true,
+        isActive = false,
         image = "", // later put default pic here
         capacity = 1000,
-        categoryID) {  
+        category) {  
         
         // Parse the startDateTime and endDateTime strings into Date objects
         const startDate = new Date(startDateTime);
@@ -25,13 +25,19 @@ class Event {
         this.name = name;
         this.description = description;
         this.startDateTime = formattedStartDateTime;
-        this.duration = duration/60 + " hour(s)";
+        this.duration = this.changeDuration(duration)
         this.endDateTime = formattedEndDateTime ;
         this.isActive = isActive;
         this.image = image; 
         this.capacity = capacity;
         this.ticketsAvailable = capacity;
-        this.categoryID = categoryID;
+        this.category = category;
+    }
+
+    changeDuration(duration) {
+        let hours = Math.round(duration/60);
+        let minutes = duration - hours*60;
+        return hours == 0 ? `${minutes} minutes` : minutes == 0 ? `${hours} hours` : `${hours} hours ${minutes} minutes` 
     }
 }
 
