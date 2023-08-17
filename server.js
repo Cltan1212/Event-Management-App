@@ -29,6 +29,7 @@ app.use(express.json())
 //Setup the static assets directories
 app.use(express.static("node_modules/bootstrap/dist/css"));
 app.use(express.static("images"));
+app.use(express.static('views'));
 app.use(express.static('css'));
 
 app.get('/', function(req, res){

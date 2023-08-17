@@ -31,7 +31,7 @@ class Event {
         this.image = image; 
         this.capacity = capacity;
         this.ticketsAvailable = capacity;
-        this.category = category;
+        this.categoryID = category;
     }
 
     changeDuration(duration) {
