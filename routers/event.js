@@ -4,6 +4,7 @@
  */
 const express = require("express");
 const eventRoute = express.Router();
+const cat = require('./category.js');
 const path = require("path");
 let Event = require("../models/event");
 let Category = require("../models/event-category")
@@ -13,7 +14,7 @@ let Category = require("../models/event-category")
  * For testing purpose
  */
 let events = []
-let categoryDb = [];
+let categoryDb = cat.getCategoryDb;
 
 const event1 = new Event("Example Event 1",
     "This is the first example event.",
@@ -25,8 +26,6 @@ const event1 = new Event("Example Event 1",
     100,
     new Category("RMIT Law Ball 2023","RMIT Law Students' Society presents RMIT Law Ball 2023")
     )
-
-categoryDb.push(new Category("Cody Johnson","Cody Johnson will perform at Rod Laver Arena in Melbourne"));
 
 events.push(event1);
 
@@ -152,5 +151,13 @@ eventRoute.get('/delete', function(req, res) {
     res.render('event-delete', { events: events });
 })
 
+// <------------------------------------------- Get Events function ------------------------------------------------>
+function getEvents(){
+    return events;
+}
+
 // exports rounter
-module.exports = eventRoute;
+module.exports = {
+    eventRoute: eventRoute,
+    getEvents: getEvents()
+};

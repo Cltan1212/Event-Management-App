@@ -127,6 +127,9 @@
 
     <!------------- script for nav bar and data time (js) ----------------->
     <script>
+        /**
+         * Below part shows the transition for navBar when user scolling
+         */ 
         // Get the navigation bar element
         const navBar = document.getElementById('mainNav');
 
@@ -141,20 +144,16 @@
                 navBar.style.backgroundColor = 'transparent';
             }
         });
-
-    // Get the start date-time input element
+    
+    /**
+     * Below part is to show to user the end date-time
+     */
+    // Get input element
     const startDateTimeInput = document.getElementById('startDateTime');
-
-    // Get the duration input element
     const durationInput = document.getElementById('duration');
-
-    // Get the end date-time input element
     const endDateTimeInput = document.getElementById('endDateTime');
 
-    // Add an event listener to the start date-time input
     startDateTimeInput.addEventListener('input', calculateEndTime);
-
-    // Add an event listener to the duration input
     durationInput.addEventListener('input', calculateEndTime);
 
     // Function to calculate and set the end date-time

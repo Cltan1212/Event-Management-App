@@ -69,7 +69,7 @@ router.get("/search-category", function(req, res) { // WIP
 
 // ---------------------------------Show events details---------------------------------
 router.get("/event", function(req, res) { // WIP
-    res.sendFile(path.join(fixedViewsPath, 'event-page.html'));
+    res.sendFile(path.join(fixedViewsPath, 'index.html'));
 });
 
 // ---------------------------------Delete a category by ID---------------------------------
@@ -89,5 +89,12 @@ router.post("/delete-category", function(req, res) { // WIP
 	res.redirect("/29678854/event-categories"); 
 });
 
+function getCategoryDb() {
+    return categoryDb;
+}
 
-module.exports = router;
+module.exports = {
+    categoryDataRouter: router,
+    getCategoryDb: getCategoryDb()
+};
+// module.exports = {getCategoryDb};
