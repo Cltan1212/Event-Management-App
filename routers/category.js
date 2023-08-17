@@ -57,7 +57,7 @@ router.get("/event-categories", function(req, res) { // WIP
  * http://localhost:8080/29678854/search-category?keyword=Melbourne
  */
 
-router.get("/search-category", function(req, res) { // WIP
+router.get("/search-category", function(req, res) {
     let keyword = req.query.keyword;
     let filteredKeyword = categoryDb.filter(category => 
         category.description.toLowerCase().includes(keyword.toLowerCase())
@@ -68,16 +68,17 @@ router.get("/search-category", function(req, res) { // WIP
 });
 
 // ---------------------------------Show events details---------------------------------
-router.get("/event", function(req, res) { // WIP
-    res.sendFile(path.join(fixedViewsPath, 'index.html'));
+router.get("/events/:id", function(req, res) { // WIP
+    const categoryID = req.params.id;
+    res.sendFile(path.join(fixedViewsPath, 'category-add.html')); 
 });
 
 // ---------------------------------Delete a category by ID---------------------------------
-router.get("/delete-category", function(req, res) { // WIP
+router.get("/delete-category", function(req, res) { 
     res.sendFile(path.join(fixedViewsPath, "category-delete.html"))
 });
 
-router.post("/delete-category", function(req, res) { // WIP
+router.post("/delete-category", function(req, res) { 
 	let id = req.body.id;
 	for (let i = 0; i < categoryDb.length; i++) {
 		if (categoryDb[i].id === id) {

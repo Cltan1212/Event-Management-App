@@ -16,7 +16,7 @@
 	</header>
         <div class="album py-5">
             <div class="container">
-                <h3 class="my-2">List of Categories</h3>
+                <h3 class="my-2">List of Filtered Categories</h3>
 
                 <div class="row row-cols-1 g-3">
                     <div class="col">
@@ -41,7 +41,7 @@
                                 <td><%= categoriesToDisplay[i].description %></td>
                                 <td><%= categoriesToDisplay[i].image %></td>
                                 <td><%= categoriesToDisplay[i].createdAt.toLocaleString("en-GB")%></td>                  
-                                <td><a type="button" class="btn btn-success" href="/">View</a></td>                  
+                                <td><a type="button" class="btn btn-success" href="../ChunLing/events-categories/<%= categoryDb[i].id%>">View</a></td>                  
                               </tr>
                               <% } %>
                             </tbody>
