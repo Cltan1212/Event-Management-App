@@ -69,7 +69,7 @@ router.get("/search-category", function(req, res) { // WIP
 
 // ---------------------------------Show events details---------------------------------
 router.get("/event", function(req, res) { // WIP
-    res.sendFile(path.join(fixedViewsPath, 'index.html'));
+    res.sendFile(path.join(fixedViewsPath, 'event-page.html'));
 });
 
 // ---------------------------------Delete a category by ID---------------------------------
