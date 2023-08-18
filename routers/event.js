@@ -4,23 +4,20 @@
  */
 const express = require("express");
 const eventRoute = express.Router();
-const cat = require('./category.js');
 const path = require("path");
-let Event = require("../models/event");
-let Category = require("../models/event-category")
+let Event = require("../models/event"); // TESTING PURPOSE
 
-const data = require("../data"); //Uyen testing
-const events = data.events; //Uyen testing
+// <------------------------------------------- Database ------------------------------------------------>
+const data = require("../data"); 
+const events = data.events; 
 const categoryDb = data.categoryDb;
 
 // <------------------------------------------- Testing Variables ------------------------------------------------>
 /**
  * For testing purpose
  */
-//let events = [] //Uyen testing
-//let categoryDb = cat.getCategoryDb; //Uyen testing
 
-let firstCategoryID = categoryDb[0].id; //Uyen testing
+let firstCategoryID = categoryDb[0].id; 
 
 const event1 = new Event("Example Event 1",
     "This is the first example event.",
@@ -49,9 +46,8 @@ events.push(event2);
 
 // <------------------------------------------- Task I: Add event ------------------------------------------------>
 /**
- * Add event page
- * http://localhost:8080/ChunLing/add-event
- * 
+ * Render the add event page.
+ * @route GET /ChunLing/add-event
  */
 eventRoute.get('/add-event', function(req, res) {
     console.log(categoryDb); // testing purpose
@@ -59,8 +55,8 @@ eventRoute.get('/add-event', function(req, res) {
 });
 
 /**
- * Receive data from user, add into event list
- * and redirect to event-list page
+ * Receive data from user, add into event list, and redirect to event-list page.
+ * @route POST /ChunLing/add-event
  */
 eventRoute.post('/add-event', function(req, res) {
     const eventData = req.body;
@@ -97,7 +93,8 @@ eventRoute.post('/add-event', function(req, res) {
 
 // <------------------------------------------- Task II: List All Events ------------------------------------------------>
 /**
- * List all events
+ * Render the list of all events.
+ * @route GET /ChunLing/events
  */
 eventRoute.get('/events', function(req, res) {
     res.render('event-list', { name: "Event List", events: events });
@@ -105,7 +102,8 @@ eventRoute.get('/events', function(req, res) {
 
 // <------------------------------------------- Task III: List Sold-out events ------------------------------------------------>
 /**
- * Sold out event
+ * Render the list of sold-out events.
+ * @route GET /ChunLing/sold-out-events
  */
 eventRoute.get('/sold-out-events', function(req, res) {
     let soldOutList = events.filter((event) => event.ticketsAvailable == 0);
@@ -115,7 +113,8 @@ eventRoute.get('/sold-out-events', function(req, res) {
 
 // <------------------------------------------- Task IV: List Sold-out events ------------------------------------------------>
 /**
- * Display category details by
+ * Render the list of events belonging to a specific category.
+ * @route GET /ChunLing/category/:categoryId
  */
 eventRoute.get('/category/:categoryId', function(req, res) {
     // check if this is an existing category ID
@@ -136,9 +135,8 @@ eventRoute.get('/category/:categoryId', function(req, res) {
 
 // <------------------------------------------- Task V: Delete Event By ID ------------------------------------------------>
 /**
- * User could delete event by using query string
- * For example:
- * http://localhost:8080/ChunLing/delete-event?eventId=EXX-XXX
+ * Handle deleting an event by its event ID.
+ * @route GET /ChunLing/delete-event
  */
 eventRoute.get('/delete-event', function(req, res) {
     let eventId = req.query.eventId
@@ -152,7 +150,8 @@ eventRoute.get('/delete-event', function(req, res) {
 });
 
 /**
- * Delete event by EventId
+ * Handle deleting an event by its event ID using a POST request.
+ * @route POST /ChunLing/delete-event
  */
 eventRoute.post('/delete-event', function(req, res) {
     let eventId = req.body.id
@@ -167,25 +166,13 @@ eventRoute.post('/delete-event', function(req, res) {
 
 // <------------------------------------------- Extra Part ------------------------------------------------>
 /**
- * User choose to delete from the main page
+ * Render the page for choosing events to delete.
+ * @route GET /ChunLing/delete
  */
 eventRoute.get('/delete', function(req, res) {
     res.render('event-delete', { events: events });
 })
 
 // // <------------------------------------------- Utility ------------------------------------------------>
-// /**
-//  * Returns event database export to other file
-//  * @returns an array of events database
-//  */
-// function getEvents(){
-//     return events;
-// }
-
-// // exports rounter
-// module.exports = {
-//     eventRoute: eventRoute,
-//     getEvents: getEvents()
-// };
 
 module.exports = eventRoute;

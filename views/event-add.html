@@ -9,9 +9,12 @@
     <title>Event Form</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!------------- style for the nav bar ----------------->
+    <!------------- style ----------------->
     <style>
+        body {
+            background-color: #25292e;
+        }
+
         .navbar-nav a {
             color: white;
             text-decoration: none;
@@ -24,12 +27,42 @@
             border: 1px solid rgba(200, 200, 200, 0.5); 
             border-radius: 5px;
         }
+
+        .masthead {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .site-heading h1 {
+            color: white;
+            font-weight: bold;
+            font-size: 3rem;
+        }
+
+        .form-control {
+            background-color: #e5e5e5;
+        }
+
     </style>
 
 </head>
 
 <!------------------------- body ---------------------------------->
-<body style="background-color: #25292e;">
+<body>
     
     <!------------- nav bar ----------------->
     <nav id="mainNav" class="navbar navbar-expand-lg fixed-top navbar-light">
@@ -51,12 +84,12 @@
     
     <!------------- header ----------------->
     <header class="masthead" style="position: relative; background-image: url('/event.jpeg'); background-size: cover; background-position: center; height: 100vh; display: flex; justify-content: center; align-items: center;">
-        <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);"></div>
+        <div class="overlay"></div>
         <div class="container">
             <div class="row">
                 <div class="col-md-10 col-lg-8 mx-auto position-relative text-center">
                     <div class="site-heading">
-                        <h1 style="color: white; font-weight: bold; font-size: 3rem;">Add Event</h1>
+                        <h1>Add Event</h1>
                         <span class="subheading" style="color: white;">Fill in event details &amp; click submit</span>
                     </div>
                 </div>
@@ -68,7 +101,7 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="p-4 bg-light rounded" style="background-color: #fff0f7;">
+                <div class="p-4 bg-light rounded">
                     <form action="/ChunLing/add-event" method="post">
                         <div class="mb-3">
                             <label for="name" class="form-label">Name:</label>
