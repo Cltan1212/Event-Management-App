@@ -38,10 +38,10 @@ app.get('/', function(req, res){
 })
 
 // Handling routes request (Group 1)
-app.use('/29678854', routeCategory.categoryDataRouter);
+app.use('/29678854', routeCategory);
 
 // Handling routes request (Group 2)
-app.use('/ChunLing', eventRoute.eventRoute)
+app.use('/ChunLing', eventRoute)
 
 app.get("*", function (request, response) {
 	response.render("404");

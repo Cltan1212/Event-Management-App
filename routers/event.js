@@ -9,12 +9,18 @@ const path = require("path");
 let Event = require("../models/event");
 let Category = require("../models/event-category")
 
+const data = require("../data"); //Uyen testing
+const events = data.events; //Uyen testing
+const categoryDb = data.categoryDb;
+
 // <------------------------------------------- Testing Variables ------------------------------------------------>
 /**
  * For testing purpose
  */
-let events = []
-let categoryDb = cat.getCategoryDb;
+//let events = [] //Uyen testing
+//let categoryDb = cat.getCategoryDb; //Uyen testing
+
+let firstCategoryID = categoryDb[0].id; //Uyen testing
 
 const event1 = new Event("Example Event 1",
     "This is the first example event.",
@@ -24,7 +30,7 @@ const event1 = new Event("Example Event 1",
     false,
     "example-image-1.jpg",
     100,
-    "CBA-4311"
+    firstCategoryID
     )
 
     const event2 = new Event("Example Event 2",
@@ -35,7 +41,7 @@ const event1 = new Event("Example Event 1",
     true,
     "example-image-2.jpg",
     1000,
-    "CBA-4311"
+    firstCategoryID
     )
 
 events.push(event1);
@@ -49,7 +55,7 @@ events.push(event2);
  */
 eventRoute.get('/add-event', function(req, res) {
     console.log(categoryDb); // testing purpose
-    res.render("event-add", { categoryDb: categoryDb });
+    res.render("event-add", { categoryDb: categoryDb});
 });
 
 /**
@@ -167,17 +173,19 @@ eventRoute.get('/delete', function(req, res) {
     res.render('event-delete', { events: events });
 })
 
-// <------------------------------------------- Utility ------------------------------------------------>
-/**
- * Returns event database export to other file
- * @returns an array of events database
- */
-function getEvents(){
-    return events;
-}
+// // <------------------------------------------- Utility ------------------------------------------------>
+// /**
+//  * Returns event database export to other file
+//  * @returns an array of events database
+//  */
+// function getEvents(){
+//     return events;
+// }
 
-// exports rounter
-module.exports = {
-    eventRoute: eventRoute,
-    getEvents: getEvents()
-};
+// // exports rounter
+// module.exports = {
+//     eventRoute: eventRoute,
+//     getEvents: getEvents()
+// };
+
+module.exports = eventRoute;

@@ -2,8 +2,11 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 const Category = require("../models/event-category");
+const data = require("../data");
 
-let categoryDb = [];
+const categoryDb = data.categoryDb;
+const events = data.events;
+//let categoryDb = [];
 
 //adding filler categories
 let category1 = new Category("THE LUME Melbourne Connection","Connection is a showcase of breathtaking stories through First Nations art and music");
@@ -31,6 +34,7 @@ router.get("/", function(req, res) {
 
 // Handle GET request to show the "Add Category" form
 router.get("/add-category", function(req, res) {
+    //res.send(data); //Uyen testing
     res.sendFile(path.join(fixedViewsPath, "category-add.html"))
 });
 
@@ -48,7 +52,7 @@ router.post("/add-category", function(req, res) {
 
 // ---------------------------------List all categories in tabular format---------------------------------
 router.get("/event-categories", function(req, res) { // WIP
-    res.render('category-list',{categoryDb});
+    res.render('category-list',{categoryDb: categoryDb});
 });
 
 // ---------------------------------List categories by keyword---------------------------------
@@ -69,8 +73,20 @@ router.get("/search-category", function(req, res) {
 
 // ---------------------------------Show events details---------------------------------
 router.get("/events/:id", function(req, res) { // WIP
-    const categoryID = req.params.id;
-    res.sendFile(path.join(fixedViewsPath, 'category-add.html')); 
+    const eventID = req.params.id;
+    if (eventID){
+        res.sendFile(path.join(fixedViewsPath, 'event-page.html')); 
+    }else {
+        // Get the first category and its first event
+        if (data.categoryDb.length > 0 && data.categoryDb[0].events.length > 0) {
+            const firstEvent = data.categoryDb[0].events[0];
+            res.render('event-page', { event: firstEvent });
+        } else {
+            // Handle the case where there are no categories or events
+            res.send("No categories or events available.");
+        }
+    }
+    
 });
 
 // ---------------------------------Delete a category by ID---------------------------------
@@ -90,12 +106,14 @@ router.post("/delete-category", function(req, res) {
 	res.redirect("/29678854/event-categories"); 
 });
 
-function getCategoryDb() {
-    return categoryDb;
-}
+// function getCategoryDb() {
+//     return categoryDb;
+// }
 
-module.exports = {
-    categoryDataRouter: router,
-    getCategoryDb: getCategoryDb()
-};
+// module.exports = {
+//     categoryDataRouter: router,
+//     getCategoryDb: getCategoryDb()
+// };
 // module.exports = {getCategoryDb};
+
+module.exports = router;
