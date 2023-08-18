@@ -41,7 +41,7 @@
                                 <td><%= categoriesToDisplay[i].description %></td>
                                 <td><%= categoriesToDisplay[i].image %></td>
                                 <td><%= categoriesToDisplay[i].createdAt.toLocaleString("en-GB")%></td>                  
-                                <td><a type="button" class="btn btn-success" href="../ChunLing/events-categories/<%= categoryDb[i].id%>">View</a></td>                  
+                                <td><a type="button" class="btn btn-success" href="../ChunLing/events-categories/<%= categoriesToDisplay[i].id%>">View</a></td>                  
                               </tr>
                               <% } %>
                             </tbody>
