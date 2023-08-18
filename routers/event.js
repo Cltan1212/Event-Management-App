@@ -24,10 +24,22 @@ const event1 = new Event("Example Event 1",
     false,
     "example-image-1.jpg",
     100,
-    new Category("RMIT Law Ball 2023","RMIT Law Students' Society presents RMIT Law Ball 2023")
+    "CBA-4311"
+    )
+
+    const event2 = new Event("Example Event 2",
+    "This is the second example event.",
+    "2023-08-20T17:00",
+    120,
+    "2023-08-20T19:00",
+    true,
+    "example-image-2.jpg",
+    1000,
+    "CBA-4311"
     )
 
 events.push(event1);
+events.push(event2);
 
 // <------------------------------------------- Task I: Add event ------------------------------------------------>
 /**
@@ -37,7 +49,7 @@ events.push(event1);
  */
 eventRoute.get('/add-event', function(req, res) {
     console.log(categoryDb); // testing purpose
-    res.render("event-add");
+    res.render("event-add", { categoryDb: categoryDb });
 });
 
 /**
@@ -53,20 +65,14 @@ eventRoute.post('/add-event', function(req, res) {
         res.redirect("../*");
     }
 
-    let category = {};
-    for (let i = 0; i < categoryDb.length; i++) {
-        console.log(categoryDb[i].id)
-        if (categoryDb[i].id === eventData.categoryID) {
-            category = categoryDb[i];
-        }
-    }
+    const categoryID = categoryDb.find(category => category.id === eventData.categoryID)?.id || "";
 
     // Calculate endDateTime based on startDateTime and duration
     const startDateTime = new Date(eventData.startDateTime);
     const duration = parseInt(eventData.duration);
     const endDateTime = new Date(startDateTime.getTime() + (duration * 60000)); // Convert duration to milliseconds
 
-    //
+    // create new event from body
     const newEvent = new Event(
         eventData.name,
         eventData.description, 
@@ -76,7 +82,7 @@ eventRoute.post('/add-event', function(req, res) {
         eventData.isActive,
         eventData.image,
         eventData.capacity,
-        category
+        categoryID
     )
     events.push(newEvent);
     console.log(events)
@@ -106,8 +112,18 @@ eventRoute.get('/sold-out-events', function(req, res) {
  * Display category details by
  */
 eventRoute.get('/category/:categoryId', function(req, res) {
+    // check if this is an existing category ID
+    if (!categoryDb.some(category => category.id === req.params.categoryId)){
+        res.render('404.html');
+    }
+
+    // get all the events with the same category ID
     let sameCategoryEvents = events.filter((event) => event.categoryID == req.params.categoryId);
-    let currentCategory = categoryDb.filter((category) => category.id == req.params.categoryId);
+    console.log(sameCategoryEvents);
+
+    // find current category in category DB
+    const currentCategory = categoryDb.find(category => category.id === req.params.categoryId);
+
     res.render('category', { category: currentCategory, events: sameCategoryEvents})
 });
 
@@ -151,7 +167,11 @@ eventRoute.get('/delete', function(req, res) {
     res.render('event-delete', { events: events });
 })
 
-// <------------------------------------------- Get Events function ------------------------------------------------>
+// <------------------------------------------- Utility ------------------------------------------------>
+/**
+ * Returns event database export to other file
+ * @returns an array of events database
+ */
 function getEvents(){
     return events;
 }
