@@ -2,7 +2,7 @@ class Category{
     constructor (name, description, image){
         this.name = name;
         this.description = description; 
-        this.image = image;
+        this.image = image || "/standard-category-image.jpg";
         this.id = `C${this.randomChar()}${this.randomChar()}-${this.randomId()}`;
         this.createdAt = new Date(); 
     }
