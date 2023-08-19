@@ -12,6 +12,7 @@ const categoryDb = data.categoryDb;
 const events = data.events;
 
 //---------------------------------Create a specific category with a fixed ID---------------------------------
+// this fixed category is always categoryDb[0]
 const fixedCategory = new Category(
     "Melbourne Moomba Festival 2023",
     "Melbourne's longest-running, iconic festival, takes place every March. Hosted many events for all ages",
@@ -79,9 +80,8 @@ router.get("/search-category", function(req, res) {
 });
 
 // ---------------------------------Show events details---------------------------------
-router.get("/event/CEX-1234", function(req, res) { // WIP
+router.get("/event/EAB-1234", function(req, res) { // WIP
     res.render('event-page', {event :events[0]})
-    //res.send(events[1])
 });
 
 router.get("/event/:id", function(req, res) { // WIP

@@ -39,7 +39,7 @@ const event2 = new Event("Example Event 2",
     firstCategoryID
 )
 
-event1.id = 'CAB-1234'; // FIXED ID 
+event1.id = 'EAB-1234'; // FIXED ID 
 events.push(event1);
 events.push(event2);
 
