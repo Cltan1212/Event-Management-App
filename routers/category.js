@@ -63,6 +63,9 @@ router.get("/event-categories", function(req, res) { // WIP
 
 router.get("/search-category", function(req, res) {
     let keyword = req.query.keyword;
+    if(keyword == null){
+        res.render('category-list',{filteredCategories: 0, allCategories: categoryDb});
+    }
     let filteredKeyword = categoryDb.filter(category => 
         category.description.toLowerCase().includes(keyword.toLowerCase())
     )
