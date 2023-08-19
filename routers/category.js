@@ -75,21 +75,14 @@ router.get("/search-category", function(req, res) {
 });
 
 // ---------------------------------Show events details---------------------------------
+router.get("/event/CEX-1234", function(req, res) { // WIP
+    res.render('event-page', {event :events[0]})
+    //res.send(events[1])
+});
+
 router.get("/event/:id", function(req, res) { // WIP
     const eventID = req.params.id;
-    if (eventID){
-        res.sendFile(path.join(fixedViewsPath, 'event-page.html')); 
-    }else {
-        // Get the first category and its first event
-        if (data.categoryDb.length > 0 && data.categoryDb[0].events.length > 0) {
-            const firstEvent = data.categoryDb[0].events[0];
-            res.render('event-page', { event: firstEvent });
-        } else {
-            // Handle the case where there are no categories or events
-            res.send("No categories or events available.");
-        }
-    }
-    
+    res.render('event-page', { event: firstEvent });
 });
 
 
