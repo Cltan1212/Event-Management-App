@@ -16,8 +16,11 @@
 	</header>
         <div class="album py-5">
             <div class="container">
+              <% if (filteredCategories.length > 0 || filteredCategories.length === 0) { %>
+                <h3 class="my-2">List of Filtered Categories</h3>
+              <% } else { %>
                 <h3 class="my-2">List of Categories</h3>
-
+              <% } %>
                 <div class="row row-cols-1 g-3">
                     <div class="col">
                         <table class="table table-hover">
@@ -32,15 +35,16 @@
                               </tr>
                             </thead>
                             
-                            <tbody> 
-                                <% for (let i=0; i <categoryDb.length; i++){ %>
+                            <tbody>  <!--condition ? exprIfTrue : exprIfFalse-->
+                              <% const categoriesToDisplay = filteredCategories.length > 0 ? filteredCategories: allCategories; %>
+                                <% for (let i=0; i <categoriesToDisplay.length; i++){ %>
                                 <tr>
-                                <th scope="row"><%= categoryDb[i].id %></th>
-                                <td><%= categoryDb[i].name %></td>
-                                <td><%= categoryDb[i].description %></td>
-                                <td><%= categoryDb[i].image %></td>
-                                <td><%= categoryDb[i].createdAt.toLocaleString("en-GB")%></td>                  
-                                <td><a type="button" class="btn btn-success" href="../ChunLing/category/<%= categoryDb[i].id%>">View</a></td>                  
+                                <th scope="row"><%= categoriesToDisplay[i].id %></th>
+                                <td><%= categoriesToDisplay[i].name %></td>
+                                <td><%= categoriesToDisplay[i].description %></td>
+                                <td><%= categoriesToDisplay[i].image %></td>
+                                <td><%= categoriesToDisplay[i].createdAt.toLocaleString("en-GB")%></td>                  
+                                <td><a type="button" class="btn btn-success" href="../ChunLing/events-categories/<%= categoriesToDisplay[i].id%>">View</a></td>                  
                               </tr>
                               <% } %>
                             </tbody>
@@ -53,9 +57,8 @@
                 <a type="button" class="btn btn-success" href="/29678854/delete-category">Delete category</a>
             </div>
         </div>
-      <div style="display: flex; justify-content: center; align-items: center; height: 20vh;">
-        <img src="/event-management.jpg" width="25%" height="80%" />
-      </div>
+        <div style="display: flex; justify-content: center; align-items: center; height: 20vh;">
+          <img src="/event-management.jpg" width="25%" height="80%" />
+        </div>
 </body>
-
 </html>

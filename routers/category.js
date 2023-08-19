@@ -52,7 +52,7 @@ router.post("/add-category", function(req, res) {
 
 // ---------------------------------List all categories in tabular format---------------------------------
 router.get("/event-categories", function(req, res) { // WIP
-    res.render('category-list',{categoryDb: categoryDb});
+    res.render('category-list',{filteredCategories: 0, allCategories: categoryDb});
 });
 
 // ---------------------------------List categories by keyword---------------------------------
@@ -66,7 +66,7 @@ router.get("/search-category", function(req, res) {
     let filteredKeyword = categoryDb.filter(category => 
         category.description.toLowerCase().includes(keyword.toLowerCase())
     )
-    res.render("category-list (filter)", { filteredCategories: filteredKeyword, allCategories: categoryDb});
+    res.render("category-list", { filteredCategories: filteredKeyword, allCategories: categoryDb});
     console.log("Filtered Count:", filteredKeyword.length);
 
 });
@@ -106,15 +106,5 @@ router.post("/delete-category", function(req, res) {
 	}
 	res.redirect("/29678854/event-categories"); 
 });
-
-// function getCategoryDb() {
-//     return categoryDb;
-// }
-
-// module.exports = {
-//     categoryDataRouter: router,
-//     getCategoryDb: getCategoryDb()
-// };
-// module.exports = {getCategoryDb};
 
 module.exports = router;
