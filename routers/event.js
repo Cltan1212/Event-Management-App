@@ -160,6 +160,14 @@ eventRoute.get('/delete', function(req, res) {
     res.render('event-delete', { events: events });
 })
 
+/**
+ * Render the page for instruction.
+ * @route GET /ChunLing/instruction
+ */
+eventRoute.get('/instruction', function(req, res) {
+    res.render('instruction-group-II');
+})
+
 // // <------------------------------------------- Utility ------------------------------------------------>
 
 module.exports = eventRoute;
