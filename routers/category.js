@@ -11,19 +11,23 @@ const data = require("../data");
 const categoryDb = data.categoryDb;
 const events = data.events;
 
-//adding filler categories
+//---------------------------------Create a specific category with a fixed ID---------------------------------
+const fixedCategory = new Category(
+    "Fixed Category Name",
+    "This is a fixed category with a fixed description",
+    "image.jpg"
+);
+fixedCategory.id = "CAB-1234"; // Overwrite the auto generated ID with fixed ID
+
+// Push the fixed category to the category array
+categoryDb.push(fixedCategory);
+//---------------------------------adding filler categories---------------------------------
 let category1 = new Category("THE LUME Melbourne Connection","Connection is a showcase of breathtaking stories through First Nations art and music");
-let category2 = new Category("Cody Johnson","Cody Johnson will perform at Rod Laver Arena in Melbourne")
-let category3 = new Category("Capriccio at Victorian Opera","This final operatic masterpiece by Richard Strauss and Clemens Krauss")
-let category4 = new Category("BEER PONG CHAMPIONSHIP","Show off your skills at our BEER PONG CHAMPIONSHIP!")
-let category5 = new Category("MURDER AT THE MANOR","Murder Mystery Dinner Theatre � Melbourne")
-let category6 = new Category("RMIT Law Ball 2023","RMIT Law Students' Society presents RMIT Law Ball 2023", "404.png") // CL: testing adding picture
+let category2 = new Category("MURDER AT THE MANOR","Murder Mystery Dinner Theatre � Melbourne")
+let category3 = new Category("RMIT Law Ball 2023","RMIT Law Students' Society presents RMIT Law Ball 2023", "404.png") // CL: testing adding picture
 categoryDb.push(category1);
 categoryDb.push(category2);
 categoryDb.push(category3);
-categoryDb.push(category4);
-categoryDb.push(category5);
-categoryDb.push(category6);
 
 let fixedViewsPath = path.join(__dirname, "../views")
 
