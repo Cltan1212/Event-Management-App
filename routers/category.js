@@ -52,7 +52,7 @@ router.post("/add-category", function(req, res) {
 
 // ---------------------------------List all categories in tabular format---------------------------------
 router.get("/event-categories", function(req, res) { // WIP
-    res.render('category-list',{filteredCategories: 0, allCategories: categoryDb});
+    res.render('category-list',{allCategories: categoryDb});
 });
 
 // ---------------------------------List categories by keyword---------------------------------
@@ -69,7 +69,7 @@ router.get("/search-category", function(req, res) {
     let filteredKeyword = categoryDb.filter(category => 
         category.description.toLowerCase().includes(keyword.toLowerCase())
     )
-    res.render("category-list", { filteredCategories: filteredKeyword, allCategories: categoryDb});
+    res.render("category-list (filter)", { filteredCategories: filteredKeyword});
     console.log("Filtered Count:", filteredKeyword.length);
 
 });

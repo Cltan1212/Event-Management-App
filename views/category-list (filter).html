@@ -16,7 +16,7 @@
   </header>
   <div class="album py-5">
     <div class="container">
-        <h3 class="my-2">List of Categories</h3>
+        <h3 class="my-2">List of Filtered Categories</h3>
         <div class="row row-cols-1 g-3">
             <div class="col">
                 <table class="table table-hover">
@@ -31,15 +31,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% for (let i = 0; i < allCategories.length; i++) { %>
+                        <% for (let i = 0; i < filteredCategories.length; i++) { %>
                         <tr>
-                            <th scope="row"><%= allCategories[i].id %></th>
-                            <td><%= allCategories[i].name %></td>
-                            <td><%= allCategories[i].description %></td>
-                            <td><%= allCategories[i].image %></td>
-                            <td><%= allCategories[i].createdAt.toLocaleString("en-GB") %></td>
+                            <th scope="row"><%= filteredCategories[i].id %></th>
+                            <td><%= filteredCategories[i].name %></td>
+                            <td><%= filteredCategories[i].description %></td>
+                            <td><%= filteredCategories[i].image %></td>
+                            <td><%= filteredCategories[i].createdAt.toLocaleString("en-GB") %></td>
                             <td><a type="button" class="btn btn-success"
-                                    href="../ChunLing/events-categories/<%= allCategories[i].id %>">View</a></td>
+                                    href="../ChunLing/events-categories/<%= filteredCategories[i].id %>">View</a></td>
                         </tr>
                         <% } %>
                     </tbody>
