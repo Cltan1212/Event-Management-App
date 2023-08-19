@@ -1,12 +1,15 @@
+/**
+ * Tasks Group 1 (student #1)
+ * Author: Uyen Vu
+ */
 const express = require("express");
 const router = express.Router();
 const path = require("path");
 const Category = require("../models/event-category");
-const data = require("../data");
 
+const data = require("../data");
 const categoryDb = data.categoryDb;
 const events = data.events;
-//let categoryDb = [];
 
 //adding filler categories
 let category1 = new Category("THE LUME Melbourne Connection","Connection is a showcase of breathtaking stories through First Nations art and music");
@@ -22,8 +25,6 @@ categoryDb.push(category4);
 categoryDb.push(category5);
 categoryDb.push(category6);
 
-
-
 let fixedViewsPath = path.join(__dirname, "../views")
 
 router.get("/", function(req, res) {
@@ -34,7 +35,6 @@ router.get("/", function(req, res) {
 
 // Handle GET request to show the "Add Category" form
 router.get("/add-category", function(req, res) {
-    //res.send(data); //Uyen testing
     res.sendFile(path.join(fixedViewsPath, "category-add.html"))
 });
 
@@ -72,7 +72,7 @@ router.get("/search-category", function(req, res) {
 });
 
 // ---------------------------------Show events details---------------------------------
-router.get("/events/:id", function(req, res) { // WIP
+router.get("/event/:id", function(req, res) { // WIP
     const eventID = req.params.id;
     if (eventID){
         res.sendFile(path.join(fixedViewsPath, 'event-page.html')); 
@@ -88,6 +88,7 @@ router.get("/events/:id", function(req, res) { // WIP
     }
     
 });
+
 
 // ---------------------------------Delete a category by ID---------------------------------
 router.get("/delete-category", function(req, res) { 
