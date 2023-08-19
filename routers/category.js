@@ -82,9 +82,14 @@ router.get("/event/CEX-1234", function(req, res) { // WIP
 
 router.get("/event/:id", function(req, res) { // WIP
     const eventID = req.params.id;
-    res.render('event-page', { event: firstEvent });
+    for (let i = 0; i < events.length; i++) {
+		if (events[i].id === eventID) {
+            console.log(events[i]);
+			res.render('event-page', {event: events[i]});
+            break;
+		}
+	}
 });
-
 
 // ---------------------------------Delete a category by ID---------------------------------
 router.get("/delete-category", function(req, res) { 
