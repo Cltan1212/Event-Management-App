@@ -23,24 +23,23 @@ const event1 = new Event("Example Event 1",
     "This is the first example event.",
     "2023-08-20T15:00",
     120,
-    "2023-08-20T17:00",
     false,
     "example-image-1.jpg",
     100,
     firstCategoryID
     )
 
-    const event2 = new Event("Example Event 2",
+const event2 = new Event("Example Event 2",
     "This is the second example event.",
     "2023-08-20T17:00",
     120,
-    "2023-08-20T19:00",
     true,
     "example-image-2.jpg",
     1000,
     firstCategoryID
-    )
+)
 
+event1.id = 'CAB-1234'; // FIXED ID 
 events.push(event1);
 events.push(event2);
 
