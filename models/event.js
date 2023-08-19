@@ -22,7 +22,7 @@ class Event {
         startDateTime, 
         duration, 
         isActive = false,
-        image = "", // later put default pic here
+        image = "event.jpeg", // later put default pic here
         capacity = 1000,
         category) {  
         
@@ -54,8 +54,8 @@ class Event {
      */
     changeDuration(d) {
         const duration = parseInt(d);
-        let hours = Math.round(duration/60);
-        let minutes = duration - hours*60;
+        const hours = Math.floor(duration / 60);
+        const minutes = duration % 60;
         return hours == 0 ? `${minutes} minutes` : minutes == 0 ? `${hours} hours` : `${hours} hours ${minutes} minutes` 
     }
 }

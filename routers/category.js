@@ -16,7 +16,7 @@ const events = data.events;
 const fixedCategory = new Category(
     "Melbourne Moomba Festival 2023",
     "Melbourne's longest-running, iconic festival, takes place every March. Hosted many events for all ages",
-    "image.jpg"
+    "example-image-1.png"
 );
 fixedCategory.id = "CME-1234"; // Overwrite the auto generated ID with fixed ID
 

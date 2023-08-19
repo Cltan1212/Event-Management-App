@@ -32,7 +32,7 @@ const event1 = new Event("Example Event 1",
 const event2 = new Event("Example Event 2",
     "This is the second example event.",
     "2023-08-20T17:00",
-    120,
+    150,
     true,
     "example-image-2.jpg",
     1000,
@@ -40,6 +40,7 @@ const event2 = new Event("Example Event 2",
 )
 
 event1.id = 'EAB-1234'; // FIXED ID 
+event2.ticketsAvailable = 0;
 events.push(event1);
 events.push(event2);
 

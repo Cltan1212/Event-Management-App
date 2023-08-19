@@ -35,13 +35,13 @@
     <!------------- nav bar ----------------->
     <nav id="mainNav" class="navbar navbar-expand-lg fixed-top navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="../" style="font-weight: bold; color: white;">Cosmos Team</a>
+            <a class="navbar-brand" href="/" style="font-weight: bold; color: white;">Cosmos Team</a>
             <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
             <div id="navbarResponsive" class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="../" style="color: white;">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/" style="color: white;">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="../delete" style="color: white;">Delete Event</a></li>
                     <li class="nav-item"><a class="nav-link" href="../add-event" style="color: white;">Add Event</a></li>
                     <li class="nav-item"><a class="nav-link" href="../events" style="color: white;">Event List</a></li>
@@ -58,6 +58,7 @@
                 <div class="col-md-10 col-lg-8 mx-auto position-relative text-center">
                     <div class="site-heading">
                         <h1 style="color: white; font-weight: bold; font-size: 3rem;">Category Page</h1>
+                        <span class="subheading" style="color: white;">🥳 <%= category.name %> 🥳</span> <br>
                     </div>
                 </div>
             </div>
@@ -111,7 +112,7 @@
                         <td><%= event.capacity %></td>
                         <td><%= event.ticketsAvailable %></td>
                         <td>
-                            <a href="../29678854/event/<%= event.id %>" class="btn btn-light rounded-pill">View</a>
+                            <a href="/29678854/event/<%= event.id %>" class="btn btn-light rounded-pill">View</a>
                         </td>
                     </tr>
                 <% }); %>
