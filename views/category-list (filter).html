@@ -36,10 +36,17 @@
                             <th scope="row"><%= filteredCategories[i].id %></th>
                             <td><%= filteredCategories[i].name %></td>
                             <td><%= filteredCategories[i].description %></td>
-                            <td><%= filteredCategories[i].image %></td>
+                            <td>
+                              <div>
+                                <p style="justify-content: left; margin-bottom: -20px;"><%= filteredCategories[i].image %> </p>
+                              <div style="display: flex; justify-content: right">
+                                <img src="<%= filteredCategories[i].image %>" alt="<%= filteredCategories[i].image %>" width="50%" height="20%">
+                              </div>  
+                            </div>
+                            </td>
                             <td><%= filteredCategories[i].createdAt.toLocaleString("en-GB") %></td>
                             <td><a type="button" class="btn btn-success"
-                                    href="../ChunLing/events-categories/<%= filteredCategories[i].id %>">View</a></td>
+                                    href="../ChunLing/category/<%= filteredCategories[i].id %>">View</a></td>
                         </tr>
                         <% } %>
                     </tbody>

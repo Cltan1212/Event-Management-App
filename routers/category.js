@@ -15,7 +15,7 @@ const events = data.events;
 // this fixed category is always categoryDb[0]
 const fixedCategory = new Category(
     "Melbourne Moomba Festival 2023",
-    "Melbourne's longest-running, iconic festival, takes place every March. Hosted many events for all ages",
+    "Melbourne's longest-running, iconic festival, takes place every March. It's Australia's largest free community festival. The Melburnian tradition is celebrated over four days",
     "/moomba.jpg"
 );
 fixedCategory.id = "CME-1234"; // Overwrite the auto generated ID with fixed ID
@@ -23,7 +23,7 @@ fixedCategory.id = "CME-1234"; // Overwrite the auto generated ID with fixed ID
 // Push the fixed category to the category array
 categoryDb.push(fixedCategory);
 //---------------------------------adding filler categories---------------------------------
-let category1 = new Category("THE LUME Melbourne Connection","Connection is a showcase of breathtaking stories through First Nations art and music","/lume-melbourne.jpg");
+let category1 = new Category("THE LUME Melbourne Connection","Connection is a showcase of breathtaking stories through First Nations art and music. Spanning 3,000 square metres of immersive gallery space, with projections four storeys high","/lume-melbourne.jpg");
 let category2 = new Category("RMIT Law Ball 2023","RMIT Law Students' Society presents RMIT Law Ball 2023. Seating RSVP - Friday, 8 September 2023 | Saturday, 9 September 2023 at Cargo Hall", "/graduation-ball.jpg")
 categoryDb.push(category1);
 categoryDb.push(category2);
