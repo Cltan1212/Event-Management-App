@@ -21,7 +21,6 @@ class Event {
         description = "", 
         startDateTime, 
         duration, 
-        endDateTime,
         isActive = false,
         image = "", // later put default pic here
         capacity = 1000,
@@ -29,7 +28,7 @@ class Event {
         
         // Parse the startDateTime and endDateTime strings into Date objects
         const startDate = new Date(startDateTime);
-        const endDate = new Date(endDateTime);
+        const endDate = new Date(startDate.getTime() + (duration * 60000));;
 
         // Format the Date objects into the desired string format
         const formattedStartDateTime = format(startDate, "MM/dd/yyyy, h:mm:ss a");
@@ -53,7 +52,8 @@ class Event {
      * @param {number} duration - The duration in minutes.
      * @returns {string} - The formatted duration string.
      */
-    changeDuration(duration) {
+    changeDuration(d) {
+        const duration = parseInt(d);
         let hours = Math.round(duration/60);
         let minutes = duration - hours*60;
         return hours == 0 ? `${minutes} minutes` : minutes == 0 ? `${hours} hours` : `${hours} hours ${minutes} minutes` 

@@ -64,30 +64,24 @@ eventRoute.post('/add-event', function(req, res) {
     // Check if the provided category ID exists in the categoryDb array
     const categoryExists = categoryDb.some(category => category.id === eventData.categoryID);
     if (!categoryExists) {
-        res.redirect("../*");
+        res.render('404.html');
     }
 
     const categoryID = categoryDb.find(category => category.id === eventData.categoryID)?.id || "";
-
-    // Calculate endDateTime based on startDateTime and duration
-    const startDateTime = new Date(eventData.startDateTime);
-    const duration = parseInt(eventData.duration);
-    const endDateTime = new Date(startDateTime.getTime() + (duration * 60000)); // Convert duration to milliseconds
 
     // create new event from body
     const newEvent = new Event(
         eventData.name,
         eventData.description, 
-        startDateTime, 
-        duration, 
-        endDateTime,
+        eventData.startDateTime, 
+        eventData.duration, 
         eventData.isActive,
         eventData.image,
         eventData.capacity,
         categoryID
     )
     events.push(newEvent);
-    console.log(events)
+    // console.log(events)
     res.redirect(path.join(req.baseUrl, '/events'));
 })
 
@@ -129,7 +123,10 @@ eventRoute.get('/category/:categoryId', function(req, res) {
     // find current category in category DB
     const currentCategory = categoryDb.find(category => category.id === req.params.categoryId);
 
-    res.render('category', { category: currentCategory, events: sameCategoryEvents})
+    // default background pic
+    const backgroundPic = currentCategory.image == undefined ? 'event-list.jpeg' : currentCategory.image
+
+    res.render('category', { backgroundImage: `/${backgroundPic}`, category: currentCategory, events: sameCategoryEvents})
 });
 
 
@@ -139,13 +136,8 @@ eventRoute.get('/category/:categoryId', function(req, res) {
  * @route GET /ChunLing/delete-event
  */
 eventRoute.get('/delete-event', function(req, res) {
-    let eventId = req.query.eventId
-    for (let i = 0;i < events.length; i++) {
-        if (events[i].id == eventId) {
-            events.splice(i,1);
-            break;
-        }
-    }
+    const eventIndex = events.findIndex(event => event.id === req.query.eventId);
+    eventIndex === -1 ? res.render('404.html') : events.splice(eventIndex, 1);
     res.redirect("/ChunLing/events");
 });
 
@@ -154,13 +146,8 @@ eventRoute.get('/delete-event', function(req, res) {
  * @route POST /ChunLing/delete-event
  */
 eventRoute.post('/delete-event', function(req, res) {
-    let eventId = req.body.id
-    for (let i = 0;i < events.length; i++) {
-        if (events[i].id == eventId) {
-            events.splice(i,1);
-            break;
-        }
-    }
+    const eventIndex = events.findIndex(event => event.id === req.body.id);
+    eventIndex === -1 ? res.render('404.html') : events.splice(eventIndex, 1);
     res.redirect("/ChunLing/events");
 })
 

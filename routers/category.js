@@ -14,7 +14,7 @@ let category2 = new Category("Cody Johnson","Cody Johnson will perform at Rod La
 let category3 = new Category("Capriccio at Victorian Opera","This final operatic masterpiece by Richard Strauss and Clemens Krauss")
 let category4 = new Category("BEER PONG CHAMPIONSHIP","Show off your skills at our BEER PONG CHAMPIONSHIP!")
 let category5 = new Category("MURDER AT THE MANOR","Murder Mystery Dinner Theatre � Melbourne")
-let category6 = new Category("RMIT Law Ball 2023","RMIT Law Students' Society presents RMIT Law Ball 2023")
+let category6 = new Category("RMIT Law Ball 2023","RMIT Law Students' Society presents RMIT Law Ball 2023", "404.png") // CL: testing adding picture
 categoryDb.push(category1);
 categoryDb.push(category2);
 categoryDb.push(category3);
