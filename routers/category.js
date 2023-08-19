@@ -13,11 +13,11 @@ const events = data.events;
 
 //---------------------------------Create a specific category with a fixed ID---------------------------------
 const fixedCategory = new Category(
-    "Fixed Category Name",
-    "This is a fixed category with a fixed description",
+    "Melbourne Moomba Festival 2023",
+    "Melbourne's longest-running, iconic festival, takes place every March. Hosted many events for all ages",
     "image.jpg"
 );
-fixedCategory.id = "CAB-1234"; // Overwrite the auto generated ID with fixed ID
+fixedCategory.id = "CME-1234"; // Overwrite the auto generated ID with fixed ID
 
 // Push the fixed category to the category array
 categoryDb.push(fixedCategory);
