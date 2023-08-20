@@ -25,8 +25,10 @@ categoryDb.push(fixedCategory);
 //---------------------------------adding filler categories---------------------------------
 let category1 = new Category("THE LUME Melbourne Connection","Connection is a showcase of breathtaking stories through First Nations art and music. Spanning 3,000 square metres of immersive gallery space, with projections four storeys high","/lume-melbourne.jpg");
 let category2 = new Category("RMIT Law Ball 2023","RMIT Law Students' Society presents RMIT Law Ball 2023. Seating RSVP - Friday, 8 September 2023 | Saturday, 9 September 2023 at Cargo Hall", "/graduation-ball.jpg")
+let category3 = new Category("Van Gogh and the Seasons","MELBOURNE WINTER MASTERPIECES 2023. The exhibition includes 36 paintings and 13 works on paper which span the artist’s entire career. Many of the artworks in this exhibition depict important places in the artist’s life","/van-gogh.jpg")
 categoryDb.push(category1);
 categoryDb.push(category2);
+categoryDb.push(category3);
 
 let fixedViewsPath = path.join(__dirname, "../views")
 
