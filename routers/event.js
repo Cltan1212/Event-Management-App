@@ -105,7 +105,7 @@ eventRoute.get('/sold-out-events', function(req, res) {
     res.redirect("/ChunLing/events");
 })
 
-// <------------------------------------------- Task IV: List Sold-out events ------------------------------------------------>
+// <------------------------------------------- Task IV: Category Details page ------------------------------------------------>
 /**
  * Render the list of events belonging to a specific category.
  * @route GET /ChunLing/category/:categoryId
@@ -118,15 +118,14 @@ eventRoute.get('/category/:categoryId', function(req, res) {
 
     // get all the events with the same category ID
     let sameCategoryEvents = events.filter((event) => event.categoryID == req.params.categoryId);
-    console.log(sameCategoryEvents);
 
     // find current category in category DB
     const currentCategory = categoryDb.find(category => category.id === req.params.categoryId);
-
+    
     // default background pic
-    const backgroundPic = currentCategory.image == undefined ? 'event-list.jpeg' : currentCategory.image
+    const backgroundPic = currentCategory.image == undefined ? '/event-list.jpeg' : currentCategory.image
 
-    res.render('category', { backgroundImage: `/${backgroundPic}`, category: currentCategory, events: sameCategoryEvents})
+    res.render('category', { backgroundImage: `${backgroundPic}`, category: currentCategory, events: sameCategoryEvents})
 });
 
 

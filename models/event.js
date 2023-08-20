@@ -22,7 +22,7 @@ class Event {
         startDateTime, 
         duration, 
         isActive = false,
-        image = "event.jpeg", // later put default pic here
+        image = "event.jpeg", 
         capacity = 1000,
         category) {  
         
