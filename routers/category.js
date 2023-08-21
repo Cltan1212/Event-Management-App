@@ -40,7 +40,7 @@ router.get("/", function(req, res) {
 
 // Handle GET request to show the "Add Category" form
 router.get("/add-category", function(req, res) {
-    res.sendFile(path.join(fixedViewsPath, "category-add.html"))
+    res.render("category-add.html")
 });
 
 // Handle POST request when the form is submitted
@@ -80,11 +80,11 @@ router.get("/search-category", function(req, res) {
 });
 
 // ---------------------------------Show events details---------------------------------
-router.get("/event/EAB-1234", function(req, res) { // WIP
+router.get("/event/EAB-1234", function(req, res) {
     res.render('event-page', {event :events[0]})
 });
 
-router.get("/event/:id", function(req, res) { // WIP
+router.get("/event/:id", function(req, res) { 
     const eventID = req.params.id;
     for (let i = 0; i < events.length; i++) {
 		if (events[i].id === eventID) {
@@ -97,7 +97,7 @@ router.get("/event/:id", function(req, res) { // WIP
 
 // ---------------------------------Delete a category by ID---------------------------------
 router.get("/delete-category", function(req, res) { 
-    res.sendFile(path.join(fixedViewsPath, "category-delete.html"))
+    res.render("category-delete.html")
 });
 
 router.post("/delete-category", function(req, res) { 
