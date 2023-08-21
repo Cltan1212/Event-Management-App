@@ -1,14 +1,49 @@
 /**
- * Tasks Group 1 (student #1)
- * Author: Uyen Vu
+ * Tasks Group 1 (student #1 29678854)
+ * @author Uyen Vu <uvuu0001@student.monash.edu>
+ */
+
+/**
+ * Express module
+ * @const
  */
 const express = require("express");
+
+/**
+ * Express router providing user related routes.
+ * @module express
+ */
 const router = express.Router();
+
+/**
+ * Import Node.js path module
+ * @module express
+ */
 const path = require("path");
+
+/**
+ * Import Category model
+ * @typedef {Object} Category
+ * @see {@link models\event-category.js}
+ */
 const Category = require("../models/event-category");
 
+/**
+ * Import global data.js providing access to category and event data
+ * @see {@link data.js}
+ */
 const data = require("../data");
+
+/**
+ * An array containing category objects.
+ * @type {Array.<Category>}
+ */
 const categoryDb = data.categoryDb;
+
+/**
+ * An array containing event objects.
+ * @type {Array.<Event>}
+ */
 const events = data.events;
 
 //---------------------------------Create a specific category with a fixed ID---------------------------------
@@ -30,7 +65,6 @@ categoryDb.push(category1);
 categoryDb.push(category2);
 categoryDb.push(category3);
 
-let fixedViewsPath = path.join(__dirname, "../views")
 
 router.get("/", function(req, res) {
     res.render('index.html')

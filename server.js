@@ -1,9 +1,18 @@
-// Declare
+/**
+ * Express router providing user related routes. Express module
+ * @requires express
+ * @const
+ */
 const express = require("express");
+
+
 const path = require("path");
 const morgan = require("morgan"); // middleware
 
-// Creating express server
+/**
+ * App isntance
+ * @const
+ */
 const app = express();
 
 // Importing all the routes
