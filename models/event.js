@@ -24,6 +24,7 @@ class Event {
         isActive = false,
         image = "event.jpeg", 
         capacity = 1000,
+        ticketsAvailable = "",
         category) {  
         
         // Parse the startDateTime and endDateTime strings into Date objects
@@ -43,7 +44,7 @@ class Event {
         this.isActive = isActive;
         this.image = image; 
         this.capacity = capacity;
-        this.ticketsAvailable = capacity;
+        this.ticketsAvailable = ticketsAvailable === "" ? this.capacity : ticketsAvailable;
         this.categoryID = category;
     }
 

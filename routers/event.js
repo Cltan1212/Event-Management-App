@@ -26,6 +26,7 @@ const event1 = new Event("Example Event 1",
     false,
     "example-image-1.jpg",
     100,
+    100,
     firstCategoryID
     )
 
@@ -36,11 +37,11 @@ const event2 = new Event("Example Event 2",
     true,
     "example-image-2.jpg",
     1000,
+    0,
     firstCategoryID
 )
 
 event1.id = 'EAB-1234'; // FIXED ID 
-event2.ticketsAvailable = 0;
 events.push(event1);
 events.push(event2);
 
@@ -60,6 +61,7 @@ eventRoute.get('/add-event', function(req, res) {
  */
 eventRoute.post('/add-event', function(req, res) {
     const eventData = req.body;
+    console.log(eventData.ticketsAvailable)
 
     // Check if the provided category ID exists in the categoryDb array
     const categoryExists = categoryDb.some(category => category.id === eventData.categoryID);
@@ -78,11 +80,11 @@ eventRoute.post('/add-event', function(req, res) {
         eventData.isActive,
         eventData.image,
         eventData.capacity,
+        eventData.ticketsAvailable,
         categoryID
     )
     events.push(newEvent);
-    // console.log(events)
-    res.redirect(path.join(req.baseUrl, '/events'));
+    res.redirect('/ChunLing/events');
 })
 
 // <------------------------------------------- Task II: List All Events ------------------------------------------------>
@@ -102,7 +104,6 @@ eventRoute.get('/events', function(req, res) {
 eventRoute.get('/sold-out-events', function(req, res) {
     let soldOutList = events.filter((event) => event.ticketsAvailable == 0);
     res.render('event-list', { name:"Sold Out List", events: soldOutList });
-    res.redirect("/ChunLing/events");
 })
 
 // <------------------------------------------- Task IV: Category Details page ------------------------------------------------>
