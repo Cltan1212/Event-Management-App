@@ -15,11 +15,29 @@ const morgan = require("morgan"); // middleware
  */
 const app = express();
 
-// Importing all the routes
+/**
+ * Import express router providing category routes
+ * @const
+ * @type {Object}
+ * @namespace routeCategory
+ */
 const routeCategory = require("./routers/category"); // import the category router
+
+/**
+ * Import express router providing event routes
+ * @const
+ * @type {Object}
+ * @namespace routeCategory
+ */
 const eventRoute = require('./routers/event'); // import event's router
 
-// Config
+/**
+ * Configure the port number
+ * @name listen
+ * @function
+ * @param {int} port - Express port number 8080
+ * @param {Function} callback - Express callback
+ */
 app.listen(8080, function () {
 	console.log(`listening on port ${8080}`);
 });
@@ -41,17 +59,43 @@ app.use(express.static("images"));
 app.use(express.static('views'));
 app.use(express.static('css'));
 
+/**
+ * Route handler for home page.
+ *
+ * Handles a GET request to render the "index.html" template as the home page.
+ *
+ * @name GET /
+ * @function
+ * @param {string} req - Express request path
+ * @param {Function} res - Express response call
+ */
 app.get('/', function(req, res){
     // res.sendFile(path.join(__dirname,"views","index.html"));
     res.render('index.html');
 })
 
+/**
+ * Route middleware for handling routes related to categories starting with "/29678854"
+ *
+ * @function
+ */
 // Handling routes request (Group 1)
 app.use('/29678854', routeCategory);
 
+/**
+ * Route middleware for handling routes related to events starting with "/ChunLing"
+ *
+ * @function
+ */
 // Handling routes request (Group 2)
 app.use('/ChunLing', eventRoute)
 
+/**
+ * Route handler for rendering a 404 page.
+ *
+ * @name GET *
+ * @function
+ */
 app.get("*", function (request, response) {
 	response.render("404");
 });
