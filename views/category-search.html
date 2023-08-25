@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!------------------------- head ---------------------------------->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Delete Event</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="effects/style.css">
+
+    <!------------- style for the nav bar ----------------->
+    <style>
+        .navbar-nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s, border 0.3s; 
+        }
+    
+        .navbar-nav a:hover {
+            text-decoration: underline;
+            font-weight: bold;
+            border: 1px solid rgba(200, 200, 200, 0.5); 
+            border-radius: 5px;
+        }
+    </style>
+
+</head>
+
+<!------------------------- body ---------------------------------->
+<body style="background-color: #25292e;">
+
+    <!------------- nav bar ----------------->
+    <nav id="mainNav" class="navbar navbar-expand-lg fixed-top navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="/" style="font-weight: bold; color: white;">Cosmos Team</a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+            <div id="navbarResponsive" class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/" style="color: white;">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../ChunLing/add-event" style="color: white;">Add Event</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../ChunLing/events" style="color: white;">Event List</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../ChunLing/sold-out-events" style="color: white;">Sold Out Event</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!------------- header ----------------->
+    <header class="masthead" style="position: relative; background-image: url('/search-category.png'); background-size: cover; background-position: center; height: 100vh; display: flex; justify-content: center; align-items: center;">
+        <div class="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5);"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-lg-8 mx-auto position-relative text-center">
+                    <div class="site-heading">
+                        <h1 style="color: white; font-weight: bold; font-size: 3rem;">Search Category Details</h1>
+                        <span class="subheading" style="color: white;">Display category detail by providing category id. The category list also provided in this page.</span> <br>
+                        <span class="subheading" style="color: white;">You can also use URL to search category details by id. E.g. http://localhost:8080/ChunLing/category/CME-1234</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!------------- form for delete event ----------------->
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="p-4 bg-light rounded" style="background-color: #343a40;">
+                    <form action="../ChunLing/category" method="post">
+                        <div class="mb-3">
+                            <label for="id" class="form-label">Category ID:</label>
+                            <input type="text" class="form-control" id="id" name="categoryId" required placeholder="Enter category ID to show the details (CXX-XXX)">
+                        </div>
+                        <button type="submit" name="submit" class="btn btn-primary" style="background-color: rgb(108, 108, 108);">Search your category details</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!------------- list of event to show to user ----------------->
+    <div class="container mt-5">
+        <table class="table table-dark table-striped">
+            <th>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                </tr>
+            </th>
+            <tb>
+                <% categories.forEach(function(category) { %>
+                    <tr>
+                        <td><%= category.id %></td>
+                        <td><%= category.name %></td>
+                    </tr>
+                <% }); %>
+            </tb>
+        </table>
+    </div>
+
+    <!------------- footer ----------------->
+    <footer class="mt-5 text-center text-white">
+        <p>See more <a href="../cosmos" style="color: white; text-decoration: underline;">@cosmos team</a></p>
+    </footer>
+
+    <!------------- script for nav bar ----------------->
+    <script src="/effects/navBar.js"></script>
+
+</body>
+</html>

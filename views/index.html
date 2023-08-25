@@ -24,17 +24,52 @@
         /* Style for the buttons */
         .btn-success {
             background-color: white;
-            color: #343a40; /* Dark color */
+            color: #232528; /* Dark color */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition for color change */
+            border: #3c3939;
+        }
+
+        /* Hover effect for the buttons */
+        .btn-success:hover {
+            background-color: #3c3939; /* Dark grey color */
+            color: white;
+        }
+
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(41, 39, 39, 0.7); 
+            z-index: -1; 
+        }
+
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
         }
     </style>
 </head>
 
 <body>
+
+    <video class="video-bg" autoplay muted loop>
+        <source src="/index.mp4" type="video/mp4">
+    </video>
+
+    <div class="background-overlay"></div>
+
     <div class="container py-5">
         <header>
             <div class="container" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
                 <h1 class="my-1 pinecone-header">
-                    <img src="/logo.png" alt="Cosmos Logo" width="15%" height="10%"> <!-- Replace "/logo.png" with the actual image path -->
+                    <img src="/cosmos.jpeg" alt="Cosmos Logo" width="15%" height="10%"> <!-- Replace "/logo.png" with the actual image path -->
                 </h1>
             </div>
         </header>
@@ -69,6 +104,7 @@
                 </div>
             </div>
         </main>
+
         <footer class="mt-auto text-white-50">
             <!-- Empty footer -->
         </footer>

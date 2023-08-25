@@ -61,7 +61,6 @@ eventRoute.get('/add-event', function(req, res) {
  */
 eventRoute.post('/add-event', function(req, res) {
     const eventData = req.body;
-    console.log(eventData.ticketsAvailable)
 
     // Check if the provided category ID exists in the categoryDb array
     const categoryExists = categoryDb.some(category => category.id === eventData.categoryID);
@@ -70,6 +69,7 @@ eventRoute.post('/add-event', function(req, res) {
     }
 
     const categoryID = categoryDb.find(category => category.id === eventData.categoryID)?.id || "";
+    const capacity = eventData.capacity ? eventData.capacity : 1000;
 
     // create new event from body
     const newEvent = new Event(
@@ -79,7 +79,7 @@ eventRoute.post('/add-event', function(req, res) {
         eventData.duration, 
         eventData.isActive,
         eventData.image,
-        eventData.capacity,
+        capacity,
         eventData.ticketsAvailable,
         categoryID
     )
@@ -108,6 +108,26 @@ eventRoute.get('/sold-out-events', function(req, res) {
 
 // <------------------------------------------- Task IV: Category Details page ------------------------------------------------>
 /**
+ * Render the search category engine.
+ * @route GET /ChunLing/category
+ */
+eventRoute.get('/category', function(req, res) {
+    res.render('category-search', { categories: categoryDb })
+});
+
+/**
+ * Receive data from user, search by the category id, and redirect to the category details page.
+ * @route POST /ChunLing/category
+ */
+eventRoute.post('/category', function(req, res) {
+    const categoryId = req.body.categoryId
+    console.log(categoryId)
+
+    // find current category in category DB
+    res.redirect(`/ChunLing/category/${categoryId}`)
+});
+
+/**
  * Render the list of events belonging to a specific category.
  * @route GET /ChunLing/category/:categoryId
  */
@@ -133,7 +153,7 @@ eventRoute.get('/category/:categoryId', function(req, res) {
 // <------------------------------------------- Task V: Delete Event By ID ------------------------------------------------>
 /**
  * Handle deleting an event by its event ID.
- * @route GET /ChunLing/delete-event
+ * @route GET /ChunLing/delete-event?id=EAB-1234
  */
 eventRoute.get('/delete-event', function(req, res) {
     const eventIndex = events.findIndex(event => event.id === req.query.eventId);

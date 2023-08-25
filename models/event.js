@@ -21,7 +21,7 @@ class Event {
         description = "", 
         startDateTime, 
         duration, 
-        isActive = false,
+        isActive = true,
         image = "event.jpeg", 
         capacity = 1000,
         ticketsAvailable = "",
@@ -35,7 +35,7 @@ class Event {
         const formattedStartDateTime = format(startDate, "MM/dd/yyyy, h:mm:ss a");
         const formattedEndDateTime = format(endDate, "MM/dd/yyyy, h:mm:ss a");
 
-        this.id = `E${randString.generate({length: 2,charset: "ABCDEF",})}-${Math.round(Math.random()*1000)}`;
+        this.id = `E${randString.generate({length: 2,charset: "ABCDEF",})}-${this.randomId()}`;
         this.name = name;
         this.description = description;
         this.startDateTime = formattedStartDateTime;
@@ -48,6 +48,15 @@ class Event {
         this.categoryID = category;
     }
 
+    /**
+     * Generate four digits random ID
+     * @returns a four digit numbers
+     */
+    randomId() {
+        const min = 1000; 
+        const max = 9999; 
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
     /**
      * Converts the duration in minutes to a human-readable format.
      * @param {number} duration - The duration in minutes.
