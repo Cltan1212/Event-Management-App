@@ -1,3 +1,5 @@
+const randString = require("randomstring");
+
 /**
  * Represents a Category
  * @constructor 
@@ -13,18 +15,8 @@ class Category{
         this.name = name;
         this.description = description; 
         this.image = image || "/standard-category-image.jpg";
-        this.id = `C${this.randomChar()}${this.randomChar()}-${this.randomId()}`;
+        this.id = `C${randString.generate({length: 2,charset: "ABCDEF",})}-${this.randomId()}`;
         this.createdAt = new Date(); 
-    }
-
-    /**
-     * Generates a random uppercase character (A-Z).
-     * @returns {string} The randomly generated character.
-     */
-    randomChar(){
-        const randomCharCode = Math.floor(Math.random() * 26) + 65; // generate between 0 - 25 (26 alphabet)
-        const randomChar = String.fromCharCode(randomCharCode); // convert to a character
-        return randomChar;
     }
 
     /**

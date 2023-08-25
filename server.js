@@ -41,22 +41,56 @@ const eventRoute = require('./routers/event'); // import event's router
 app.listen(8080, function () {
 	console.log(`listening on port ${8080}`);
 });
+
+/**
+ * Use Morgan middleware to generates logs automatically to any request in 'tiny' format
+ * @function
+ * @name morgan('tiny')
+ */
 app.use(morgan('tiny'));
 
-//Setup the view Engine
+
+/**
+ * Sets up the view engine for rendering HTML templates
+ * @function
+ */
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
+
+/**
+ * Middleware function that configures the Express application to parse incoming
+ * requests with `Content-Type: application/json` format.
+ * @function
+ */
 // parse application/x-www-form-urlencoded
 app.use(express.urlencoded({extended: true}));
 // parse application/json
 app.use(express.json())
 
-
+/**
+ * Middleware function that serves bootstrap static file
+ * @function
+ */
 //Setup the static assets directories
 app.use(express.static("node_modules/bootstrap/dist/css"));
+
+/**
+ * Middleware function that serves images static folder
+ * @function
+ */
 app.use(express.static("images"));
+
+/**
+ * Middleware function that serves views static folder
+ * @function
+ */
 app.use(express.static('views'));
+
+/**
+ * Middleware function that serves static css
+ * @function
+ */
 app.use(express.static('css'));
 
 /**
@@ -76,7 +110,6 @@ app.get('/', function(req, res){
 
 /**
  * Route middleware for handling routes related to categories starting with "/29678854"
- *
  * @function
  */
 // Handling routes request (Group 1)
@@ -84,7 +117,6 @@ app.use('/29678854', routeCategory);
 
 /**
  * Route middleware for handling routes related to events starting with "/ChunLing"
- *
  * @function
  */
 // Handling routes request (Group 2)

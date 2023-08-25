@@ -183,7 +183,6 @@ router.get("/search-category", function(req, res) {
  * @param {string} req - Express request path
  * @param {Function} res - Express response call
  */
-router.g
 router.get("/event/EAB-1234", function(req, res) {
     res.render('event-page', {event :events[0]})
 });
