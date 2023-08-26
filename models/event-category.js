@@ -20,13 +20,13 @@ class Category{
     }
 
     /**
-     * Generates a random ID between 1000 and 9999.
+     * Generates a random ID between 1000 and 9999, inclusive.
      * @returns {number} The randomly generated ID.
      */
     randomId() {
-        const min = 1000; // Minimum value to ensure 4 digits
+        const min = 1000; // Minimum value
         const max = 9999; // Maximum value
-        return Math.floor(Math.random() * (max - min + 1)) + min;
+        return Math.floor(Math.random() * (max - min + 1)) + min; //Max/Min number is inclusive
     }
 }
 
