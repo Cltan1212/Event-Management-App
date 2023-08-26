@@ -6,17 +6,17 @@
 </head>
 
 <body style="background-image: url('/category.jpg')">
-  <header style="margin-top: 50px; background-color: #caedba">
-    <div class="container" style="display: flex; flex-direction: column; align-items: center;">
-      <h1 class="my-1">🌼Event Mangement App🌼</h1>
-    </div>
-    <div style="display: flex; flex-direction: column; align-items: center;">
-      <h2 class="my-2">Admin Panel</h2>
-    </div>
-  </header>
+	<header style="margin-top: 50px; background-color: #3b2b2e;">
+		<div class="container" style="display: flex; flex-direction: column; align-items: center;">
+			<h1 class="my-1" style="color: bisque;">🥨Event Mangement App🥨</h1>
+		</div>
+		<div style="display: flex; flex-direction: column; align-items: center;">
+			<h2 class="my-2" style="color: bisque" >Admin Panel</h2>
+		</div>
+	</header>
   <div class="album py-5">
-    <div class="container">
-        <h3 class="my-2">List of Filtered Categories</h3>
+    <div class="container" >
+        <h3 class="my-2" style="color: bisque; background-color: #3b2b2e;">🥯 List of Filtered Categories</h3>
         <div class="row row-cols-1 g-3">
             <div class="col">
                 <table class="table table-hover">
@@ -45,7 +45,7 @@
                             </div>
                             </td>
                             <td><%= filteredCategories[i].createdAt.toLocaleString("en-GB") %></td>
-                            <td><a type="button" class="btn btn-success"
+                            <td><a type="button" class="btn btn-warning"
                                     href="../ChunLing/category/<%= filteredCategories[i].id %>">View</a></td>
                         </tr>
                         <% } %>
@@ -53,9 +53,9 @@
                 </table>
             </div>
         </div>
-        <a type="button" class="btn btn-success" href="/">Home</a>
-        <a type="button" class="btn btn-success" href="/29678854/add-category">Add New Category</a>
-        <a type="button" class="btn btn-success" href="/29678854/delete-category">Delete category</a>
+        <a type="button" class="btn btn-warning" href="/">Home</a>
+        <a type="button" class="btn btn-warning" href="/29678854/add-category">Add New Category</a>
+        <a type="button" class="btn btn-warning" href="/29678854/delete-category">Delete category</a>
     </div>
 </div>
   <div style="display: flex; justify-content: center; align-items: center; height: 20vh;">
