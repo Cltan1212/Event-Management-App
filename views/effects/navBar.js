@@ -1,11 +1,10 @@
 /**
- * Below part shows the transition for navBar when user scolling
- */ 
-// Get the navigation bar element
-const navBar = document.getElementById('mainNav');
+ * Functionality to handle the transition effect for the navigation bar when scrolling.
+ * Changes the background color of the navigation bar on scroll.
+ */
+const navBar = document.getElementById('mainNav');  // navigation bar element
 
-// Add an event listener for the scroll event
-window.addEventListener('scroll', () => {
+window.addEventListener('scroll', () => {  // scroll event
     // Check the scroll position
     if (window.scrollY > 50) {
         // Change the background color when scrolling down

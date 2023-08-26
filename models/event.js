@@ -1,5 +1,5 @@
-const randString = require("randomstring");
-const { format } = require("date-fns"); // I use this for convert the data format
+const randString = require("randomstring"); // generate random string
+const { format } = require("date-fns"); // convert the data format
 
 /**
  * Represents an Event.
@@ -18,20 +18,20 @@ const { format } = require("date-fns"); // I use this for convert the data forma
 class Event {
     constructor(
         name,
-        description = "", 
+        description = "", // default value
         startDateTime, 
         duration, 
         isActive = true,
         image = "event.jpeg", 
         capacity = 1000,
-        ticketsAvailable = "",
+        ticketsAvailable = 0,
         category) {  
         
-        // Parse the startDateTime and endDateTime strings into Date objects
+        // Create date object from string type
         const startDate = new Date(startDateTime);
         const endDate = new Date(startDate.getTime() + (duration * 60000));;
 
-        // Format the Date objects into the desired string format
+        // convert into desired string format
         const formattedStartDateTime = format(startDate, "MM/dd/yyyy, h:mm:ss a");
         const formattedEndDateTime = format(endDate, "MM/dd/yyyy, h:mm:ss a");
 
@@ -44,7 +44,7 @@ class Event {
         this.isActive = isActive;
         this.image = image; 
         this.capacity = capacity;
-        this.ticketsAvailable = ticketsAvailable === "" ? this.capacity : ticketsAvailable;
+        this.ticketsAvailable = ticketsAvailable ? this.capacity : ticketsAvailable;
         this.categoryID = category;
     }
 

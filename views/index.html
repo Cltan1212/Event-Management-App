@@ -1,37 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!------------------------- head ---------------------------------->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Event Management App</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!------------- style ----------------->
     <style>
         /* Custom CSS for the background color */
         body {
-            background-color: #252a2e; /* Dark color */
+            background-color: #252a2e; 
         }
 
         /* Style for the Pinecone header */
         .pinecone-header {
             color: white;
             font-weight: bold;
-            font-size: 1.8rem; /* Slightly smaller font size */
-            margin-bottom: 0; /* Remove default margin to reduce spacing */
+            font-size: 1.8rem; 
+            margin-bottom: 0; 
         }
 
         /* Style for the buttons */
         .btn-success {
             background-color: white;
-            color: #232528; /* Dark color */
-            transition: background-color 0.3s, color 0.3s; /* Smooth transition for color change */
+            color: #232528; 
+            transition: background-color 0.3s, color 0.3s; 
             border: #3c3939;
         }
 
-        /* Hover effect for the buttons */
         .btn-success:hover {
-            background-color: #3c3939; /* Dark grey color */
+            background-color: #3c3939; 
             color: white;
         }
 
@@ -42,7 +43,7 @@
             width: 100%;
             height: 100%;
             background-color: rgba(41, 39, 39, 0.7); 
-            z-index: -1; 
+            z-index: -1;  /* indicate the layer */
         }
 
         video {
@@ -57,15 +58,19 @@
     </style>
 </head>
 
+<!------------------------- body ---------------------------------->
 <body>
 
+    <!------------- video background ----------------->
     <video class="video-bg" autoplay muted loop>
         <source src="/index.mp4" type="video/mp4">
     </video>
 
+    <!------------- background overlay ----------------->
     <div class="background-overlay"></div>
 
     <div class="container py-5">
+        <!------------- header ----------------->
         <header>
             <div class="container" style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
                 <h1 class="my-1 pinecone-header">
@@ -73,6 +78,8 @@
                 </h1>
             </div>
         </header>
+
+        <!------------- main ----------------->
         <main>
             <div class="container" style="display: flex; flex-direction: column; align-items: center;">
                 <h1 class="my-1" style="color: white;">Event Management App</h1>
@@ -80,7 +87,9 @@
             <div style="display: flex; flex-direction: column; align-items: center;">
                 <h2 class="my-2" style="color: white;">Admin Panel</h2>
             </div>
+
             <div>
+                <!------------- Group I ----------------->
                 <div style="margin-top: 35px; display: flex; flex-direction: column; align-items: center;">
                     <h6 style="color: white;"> Tasks Group 1 (Uyen Vu 29678854)</h6>
                     <div>
@@ -91,23 +100,21 @@
                         <a class="btn btn-success" href="/29678854/delete-category">Delete Category by ID</a>
                     </div>
                 </div>
+
+                <!------------- Group II ----------------->
                 <div style="margin-top: 50px; display: flex; flex-direction: column; align-items: center;">
                     <h6 style="color: white;"> Tasks Group 2 (Chun Ling 33402973)</h6>
                     <div>
                         <a class="btn btn-success" href="/ChunLing/add-event">Add Event</a>
                         <a class="btn btn-success" href="/ChunLing/events">List all Events</a>
                         <a class="btn btn-success" href="/ChunLing/sold-out-events">List sold out Events</a>
-                        <a class="btn btn-success" href="/ChunLing/category/CME-1234">Category detail page</a>
+                        <a class="btn btn-success" href="/ChunLing/category">Category detail page</a>
                         <a class="btn btn-success" href="/ChunLing/delete">Delete Event by ID</a>
                         <a class="btn btn-success" href="/ChunLing/instruction">Instruction Group II</a>
                     </div>
                 </div>
             </div>
         </main>
-
-        <footer class="mt-auto text-white-50">
-            <!-- Empty footer -->
-        </footer>
     </div>
 </body>
 

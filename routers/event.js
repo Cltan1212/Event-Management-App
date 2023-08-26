@@ -1,23 +1,42 @@
 /**
  * Tasks Group 2 (student #2)
- * Author: Tan Chun Ling
+ * @author Tan Chun Ling
+ */
+
+// <------------------------------------------- Modules ------------------------------------------------>
+/**
+ * Express module
+ * @const
  */
 const express = require("express");
+
+/**
+ * Express router providing user related routes.
+ * @module express
+ */
 const eventRoute = express.Router();
-const path = require("path");
+
+/**
+ * Import Event model
+ * @typedef {Object} Event
+ * @see {@link models\event.js}
+ */
 let Event = require("../models/event"); // TESTING PURPOSE
 
 // <------------------------------------------- Database ------------------------------------------------>
+/**
+ * Import global data.js providing access to category and event data
+ * @see {@link data.js}
+ */
 const data = require("../data"); 
 const events = data.events; 
 const categoryDb = data.categoryDb;
 
-// <------------------------------------------- Testing Variables ------------------------------------------------>
+// <------------------------------------------- Testing ------------------------------------------------>
 /**
  * For testing purpose
  */
-
-let firstCategoryID = categoryDb[0].id; 
+const firstCategoryID = categoryDb[0].id; 
 
 const event1 = new Event("Example Event 1",
     "This is the first example event.",
@@ -62,14 +81,19 @@ eventRoute.get('/add-event', function(req, res) {
 eventRoute.post('/add-event', function(req, res) {
     const eventData = req.body;
 
-    // Check if the provided category ID exists in the categoryDb array
+    // Checking input: category ID exists
     const categoryExists = categoryDb.some(category => category.id === eventData.categoryID);
     if (!categoryExists) {
         res.render('404.html');
     }
 
+    // Checking input: positive integer
     const categoryID = categoryDb.find(category => category.id === eventData.categoryID)?.id || "";
     const capacity = eventData.capacity ? eventData.capacity : 1000;
+    const validCapacity = capacity >= 0;
+    if (!validCapacity) {
+        res.render('404.html');
+    }
 
     // create new event from body
     const newEvent = new Event(
@@ -102,7 +126,7 @@ eventRoute.get('/events', function(req, res) {
  * @route GET /ChunLing/sold-out-events
  */
 eventRoute.get('/sold-out-events', function(req, res) {
-    let soldOutList = events.filter((event) => event.ticketsAvailable == 0);
+    const soldOutList = events.filter((event) => event.ticketsAvailable == 0);
     res.render('event-list', { name:"Sold Out List", events: soldOutList });
 })
 
@@ -120,8 +144,7 @@ eventRoute.get('/category', function(req, res) {
  * @route POST /ChunLing/category
  */
 eventRoute.post('/category', function(req, res) {
-    const categoryId = req.body.categoryId
-    console.log(categoryId)
+    const categoryId = req.body.categoryId;
 
     // find current category in category DB
     res.redirect(`/ChunLing/category/${categoryId}`)
@@ -132,17 +155,15 @@ eventRoute.post('/category', function(req, res) {
  * @route GET /ChunLing/category/:categoryId
  */
 eventRoute.get('/category/:categoryId', function(req, res) {
-    // check if this is an existing category ID
-    if (!categoryDb.some(category => category.id === req.params.categoryId)){
-        res.render('404.html');
+    // Find the category with the given ID
+    const currentCategory = categoryDb.find(category => category.id === req.params.categoryId);
+    if (!currentCategory) {
+        return res.render('404.html');
     }
 
     // get all the events with the same category ID
-    let sameCategoryEvents = events.filter((event) => event.categoryID == req.params.categoryId);
-
-    // find current category in category DB
-    const currentCategory = categoryDb.find(category => category.id === req.params.categoryId);
-    
+    let sameCategoryEvents = events.filter((event) => event.categoryID === req.params.categoryId);
+  
     // default background pic
     const backgroundPic = currentCategory.image == undefined ? '/event-list.jpeg' : currentCategory.image
 
